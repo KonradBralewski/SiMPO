@@ -1,10 +1,19 @@
-﻿<MudText Typo="Typo.h2" S>SiMPO</MudText>
-<MudSpacer />
+﻿<MudLink Href="/" Typo="Typo.h2" Class="mud-palette-primary mr-4">SiMPO</MudLink>
+<MudSpacer/>
+<MudSwitch @bind-Checked="IsDarkMode" onclick="@ToggleDarkMode" Label="@_togglerLabel"/>
 <MudContainer Class="d-flex flex-row gap-5 mr-0 align-center justify-end">
-    <MudLink Href="/about" Typo="Typo.h5">About</MudLink>
-    <MudLink Href="/server" Typo="Typo.h5">Server</MudLink>
-    <MudLink Href="/wiki" Typo="Typo.h5">WIKI</MudLink>
-    <MudLink Href="/contact" Typo="Typo.h5">Contact</MudLink>
-    <MudButton Class="pa-2" Style="@($"color:{Colors.LightGreen.Accent3}; background:{Colors.BlueGrey.Darken4};")">Log In</MudButton>
-    <MudButton Class="pa-2" Style="@($"color:{Colors.LightGreen.Accent3}; background:{Colors.BlueGrey.Darken4};")">Sign Up</MudButton>
+    <MudLink Href="/players" Typo="Typo.h6">Players</MudLink>
+    <MudLink Href="/map" Typo="Typo.h6">Map</MudLink>
+    <MudLink Href="/mods" Typo="Typo.h6">Mods</MudLink>
+    <MudLink Href="/forum" Typo="Typo.h6">Forum</MudLink>
+    <MudLink Href="/contact" Typo="Typo.h6">Contact</MudLink>
+    <AuthorizeView>
+        <NotAuthorized>
+            <MudButton Class="pa-3" Style="@($"color:{Colors.LightGreen.Accent3}; background:{Colors.BlueGrey.Darken4};")">Log In</MudButton>
+            <MudButton Class="pa-3" Style="@($"color:{Colors.LightGreen.Accent3}; background:{Colors.BlueGrey.Darken4};")">Sign Up</MudButton>
+        </NotAuthorized>
+        <Authorized>
+            <MudButton Class="pa-3" Style="@($"color:{Colors.Red.Default}; background:{Colors.BlueGrey.Darken4}; font-weight: 700;")">Log out</MudButton>
+        </Authorized>
+    </AuthorizeView>
 </MudContainer>

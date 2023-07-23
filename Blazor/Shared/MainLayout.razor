@@ -2,13 +2,13 @@
 
 @inject NavigationManager NavigationManager
 
-<MudThemeProvider/>
+<MudThemeProvider Theme="_customTheme" @bind-IsDarkMode="_isDarkMode"/>
 <MudDialogProvider/>
 <MudSnackbarProvider/>
 
 <MudLayout>
-    <MudAppBar Color="Color.Dark" Elevation="0" Class="p-0 m-0">
-        <NavMenu/>
+    <MudAppBar Class="p-0 m-0" Elevation="4">
+        <NavMenu ToggleDarkMode="@ToggleDarkMode" IsDarkMode="@_isDarkMode"/>
     </MudAppBar>
     <MudMainContent>
         @Body

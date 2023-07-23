@@ -76,7 +76,7 @@ namespace SiMPO.Blazor.Infrastracture.AppSettings
         {
             TextPrimary = Colors.Shades.Black,
             Primary = Colors.Green.Lighten3,
-            Background = Colors.DeepOrange.Lighten5
+            Background = Colors.Indigo.Lighten4
         };
 
         private static PaletteDark DefaultPaletteDark = new PaletteDark()

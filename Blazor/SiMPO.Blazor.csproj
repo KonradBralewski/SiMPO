@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Shared\SiMPO.Shared.csproj" />
+	  <ProjectReference Include="..\Components\SiMPO.Components.csproj" />
   </ItemGroup>
 
 </Project>

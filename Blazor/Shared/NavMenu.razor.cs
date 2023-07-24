@@ -1,11 +1,20 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
-using SiMPO.Blazor.Infrastracture.AppSettings;
+using MudBlazor;
+using SiMPO.Blazor.Infrastracture.Authentication;
+using SiMPO.Components.Authentication.Login;
+using SiMPO.Components.Authentication.SignUp;
 
 namespace SiMPO.Blazor.Shared
 {
     public partial class NavMenu
     {
+        [Inject]
+        public AuthenticationStateProvider AuthenticationStateProvider { get; set; } = null!;
+
+        [Inject]
+        public IDialogService DialogService { get; set; } = null!;
+
         [Parameter]
         public EventCallback ToggleDarkMode { get; set; }
         [Parameter]
@@ -31,6 +40,21 @@ namespace SiMPO.Blazor.Shared
         private void UpdateTogglerLabel()
         {
             _togglerLabel = "Toggle " + (IsDarkMode ? "Light Mode" : "Dark Mode");
+        }
+
+        private void Logout()
+        {
+            ((CustomAuthenticationStateProvider)AuthenticationStateProvider).MarkUserAsLoggedOut();
+        }
+
+        private async Task ShowLoginDialog()
+        {
+            await DialogService.ShowAsync<LoginDialog>();
+        }
+
+        private async Task ShowSignUpDialog()
+        {
+            await DialogService.ShowAsync<SignUpDialog>();
         }
 
     }

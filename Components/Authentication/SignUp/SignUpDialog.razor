@@ -1,0 +1,17 @@
+<MudDialog>
+    <EditForm Model="@_user">
+        <FluentValidationValidator @ref="@_fluentValidationValidator"/>
+        <ValidationSummary/>
+        <MudGrid>
+            <MudItem>
+                <MudCard>
+                    <MudCardContent>
+                        <MudTextField @bind-Value="_user.Nickname" Label="Nickname"/>
+                        <MudTextField @bind-Value="_user.Email" Label="Email" />
+                        <MudTextField @bind-Value="_user.Password" Label="Password" />
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+        </MudGrid>
+    </EditForm>
+</MudDialog>

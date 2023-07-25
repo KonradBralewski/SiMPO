@@ -54,7 +54,14 @@ namespace SiMPO.Blazor.Shared
 
         private async Task ShowSignUpDialog()
         {
-            await DialogService.ShowAsync<SignUpDialog>();
+            var dialogOptions = new DialogOptions
+            {
+                CloseButton = true,
+                NoHeader = true,
+                DisableBackdropClick = true,
+            };
+
+            await DialogService.ShowAsync<SignUpDialog>("Sign Up", dialogOptions);
         }
 
     }

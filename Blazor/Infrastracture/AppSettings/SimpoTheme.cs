@@ -75,7 +75,8 @@ namespace SiMPO.Blazor.Infrastracture.AppSettings
         private static PaletteLight DefaultPaletteLight = new PaletteLight()
         {
             TextPrimary = Colors.Shades.Black,
-            Primary = Colors.Green.Lighten3,
+            Primary = Colors.Green.Lighten2,
+            SecondaryLighten = Colors.Red.Lighten2,
             Background = Colors.Indigo.Lighten4
         };
 

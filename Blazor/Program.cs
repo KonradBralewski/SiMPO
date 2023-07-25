@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor.Services;
 using SiMPO.Blazor;
+using SiMPO.Blazor.Infrastracture;
 using SiMPO.Blazor.Infrastracture.Authentication;
 
 namespace SiMPO.Client
@@ -16,9 +17,9 @@ namespace SiMPO.Client
             builder.RootComponents.Add<HeadOutlet>("head::after");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-            builder.Services.AddMudServices();
 
-            builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+            builder.Services.AddInfrastructure();
+
             builder.Services.AddOptions();
             builder.Services.AddAuthorizationCore();
 

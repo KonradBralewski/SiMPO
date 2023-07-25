@@ -1,17 +1,23 @@
-<MudDialog>
-    <EditForm Model="@_user">
+<MudDialog ClassContent="">
+    <DialogContent>
+        <EditForm Model="@_user">
         <FluentValidationValidator @ref="@_fluentValidationValidator"/>
-        <ValidationSummary/>
         <MudGrid>
-            <MudItem>
-                <MudCard>
-                    <MudCardContent>
-                        <MudTextField @bind-Value="_user.Nickname" Label="Nickname"/>
-                        <MudTextField @bind-Value="_user.Email" Label="Email" />
-                        <MudTextField @bind-Value="_user.Password" Label="Password" />
-                    </MudCardContent>
-                </MudCard>
-            </MudItem>
-        </MudGrid>
-    </EditForm>
+                <MudItem>
+                    <MudCard>
+                        <MudCardContent>
+                            <MudTextField @bind-Value="_user.Nickname" Label="Nickname" />
+                            <MudTextField @bind-Value="_user.Email" Label="Email" />
+                            <MudTextField @bind-Value="_user.Password" Label="Password" />
+                            <MudTextField @bind-Value="_passwordConfirmation" Label="Confirm Password" />
+                            <MudCheckBox @bind-Checked="_checkedTOS" Label="Accept Terms of Service" onclick="@ShowTOS"/>
+                        </MudCardContent>
+                    </MudCard>
+                </MudItem>
+         </MudGrid>
+        </EditForm>
+    </DialogContent>
+    <DialogActions>
+        <MudButton Color="MudBlazor.Color.Primary" OnClick="Submit" Class="mr-auto ml-auto">Register</MudButton>
+    </DialogActions>
 </MudDialog>

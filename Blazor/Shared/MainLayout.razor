@@ -1,16 +1,18 @@
-﻿@inherits LayoutComponentBase
-
-@inject NavigationManager NavigationManager
+﻿@using SiMPO.Blazor.Infrastracture.AppSettings;
+@inherits LayoutComponentBase
 
 <MudThemeProvider Theme="_customTheme" @bind-IsDarkMode="_isDarkMode"/>
 <MudDialogProvider/>
 <MudSnackbarProvider/>
+@inject IAppSettingsProvider _appSettingsProvider
 
 <MudLayout>
     <MudAppBar Class="p-0 m-0" Elevation="4">
         <NavMenu ToggleDarkMode="@ToggleDarkMode" IsDarkMode="@_isDarkMode"/>
     </MudAppBar>
     <MudMainContent>
-        @Body
+        <CascadingValue Value="@_appSettingsProvider">
+            @Body
+        </CascadingValue>
     </MudMainContent>
 </MudLayout>

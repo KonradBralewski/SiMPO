@@ -9,8 +9,8 @@
     <MudLink Href="/contact" Typo="Typo.h6">Contact</MudLink>
     <AuthorizeView>
         <NotAuthorized>
-            <MudButton Class="pa-3" OnClick="@ShowLoginDialog" Variant="Variant.Filled" Color="Color.Primary">Log In</MudButton>
-            <MudButton Class="pa-3" OnClick="@ShowSignUpDialog" Variant="Variant.Filled" Color="Color.Primary">Sign Up</MudButton>
+            <MudButton Class="pa-3" OnClick="@ShowLoginDialog" Variant="Variant.Filled" Color="Color.Secondary">Log In</MudButton>
+            <MudButton Class="pa-3" OnClick="@ShowSignUpDialog" Variant="Variant.Filled" Color="Color.Secondary">Sign Up</MudButton>
         </NotAuthorized>
         <Authorized>
             <MudButton OnClick="@Logout"

@@ -1,4 +1,5 @@
-﻿using MudBlazor;
+﻿using Microsoft.AspNetCore.Components;
+using MudBlazor;
 using SiMPO.Blazor.Infrastracture.AppSettings;
 
 namespace SiMPO.Blazor.Shared
@@ -8,16 +9,19 @@ namespace SiMPO.Blazor.Shared
         private MudTheme _customTheme = null!;
         private bool _isDarkMode;
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            _customTheme = SimpoTheme.CustomTheme;
-            _isDarkMode = SimpoSettings.isDarkMode;
+            _customTheme = _appSettingsProvider.GetAppTheme();
+
+            var preferences = await _appSettingsProvider.GetUserPreferences();
+
+            _isDarkMode = preferences.isDarkMode;
         }
 
         private void ToggleDarkMode()
         {
             _isDarkMode = !_isDarkMode;
-            SimpoSettings.isDarkMode = _isDarkMode;
+            _appSettingsProvider!.SetIsDarkMode(_isDarkMode);
         }
     }
 }

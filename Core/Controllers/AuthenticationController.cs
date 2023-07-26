@@ -1,13 +1,13 @@
 ﻿using ErrorOr;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SiMPO.Core.Common.Interfaces.Services;
-using SiMPO.Core.Controllers.Base;
-using SiMPO.Shared.Contracts.Requests.Authentication;
+using Shared.Contracts.Requests.Authentication;
+using Core.Common.Interfaces.Services;
+using Core.Controllers.Base;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace SiMPO.Core.Controllers
+namespace Core.Controllers
 {
     [AllowAnonymous]
     [Route("auth")]

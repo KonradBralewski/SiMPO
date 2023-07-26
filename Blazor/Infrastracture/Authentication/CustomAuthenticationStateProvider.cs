@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components.Authorization;
 using System.Security.Claims;
 
-namespace SiMPO.Blazor.Infrastracture.Authentication
+namespace Blazor.Infrastracture.Authentication
 {
     public class CustomAuthenticationStateProvider : AuthenticationStateProvider
     {

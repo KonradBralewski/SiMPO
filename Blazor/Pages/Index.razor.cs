@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
-using SiMPO.Blazor.Infrastracture.AppSettings;
+using Blazor.Infrastracture.AppSettings;
 
-namespace SiMPO.Blazor.Pages
+namespace Blazor.Pages
 {
     public partial class Index : IDisposable
     {

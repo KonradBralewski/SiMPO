@@ -1,4 +1,4 @@
-﻿namespace SiMPO.Core.Infrastracture.Authentication.JWT
+﻿namespace Core.Infrastracture.Authentication.JWT
 {
     internal sealed class JwtSettings
     {

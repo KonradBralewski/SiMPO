@@ -1,8 +1,8 @@
 ﻿using ErrorOr;
-using SiMPO.Shared.Contracts.Requests.Authentication;
-using SiMPO.Shared.Contracts.Responses.Authentication;
+using Shared.Contracts.Requests.Authentication;
+using Shared.Contracts.Responses.Authentication;
 
-namespace SiMPO.Core.Common.Interfaces.Services
+namespace Core.Common.Interfaces.Services
 {
     public interface IAuthenticationService
     {

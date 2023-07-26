@@ -9,9 +9,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Options;
-using SiMPO.Core.Common.Http;
+using Core.Common.Errors;
+using Core.Common.Http;
 
-namespace SiMPO.Core.Common.Errors;
+namespace Core.Common.Errors;
 
 internal sealed class CustomProblemDetailsFactory : ProblemDetailsFactory
 {

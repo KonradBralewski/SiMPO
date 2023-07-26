@@ -1,7 +1,7 @@
 ﻿
-using SiMPO.Core.Common.Interfaces.Services;
+using Core.Common.Interfaces.Services;
 
-namespace SiMPO.Core.Infrastracture.Services
+namespace Core.Infrastracture.Services
 {
     internal sealed class DateTimeProvider : IDateTimeProvider
     {

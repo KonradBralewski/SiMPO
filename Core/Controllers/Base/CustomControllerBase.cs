@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using ErrorOr;
-using SiMPO.Core.Common.Http;
-using SiMPO.Core.Common.Errors;
+using Core.Common.Errors.MightHappen;
+using Core.Common.Http;
 
-namespace SiMPO.Core.Controllers.Base
+namespace Core.Controllers.Base
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -41,7 +41,7 @@ namespace SiMPO.Core.Controllers.Base
             HttpContext.Items[HttpContextItemKeys.Errors] = errors;
 
             /// CUSTOM
-            if (firstError == Errors.MightHappen.Authentication.InvalidCredentials)
+            if (firstError == Core.Common.Errors.MightHappen.MightHappen.Authentication.InvalidCredentials)
             {
                 return Problem(statusCode: StatusCodes.Status401Unauthorized, title: firstError.Description);
             }

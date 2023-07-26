@@ -1,12 +1,12 @@
 ﻿using FluentValidation;
-using SiMPO.Shared.Contracts.Requests.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Shared.Contracts.Requests.Authentication;
 
-namespace SiMPO.Shared.Validation.Validators.Authentication
+namespace Shared.Validation.Validators.Authentication
 {
     public sealed class LoginRequestValidator : AbstractValidator<LoginRequest>
     {

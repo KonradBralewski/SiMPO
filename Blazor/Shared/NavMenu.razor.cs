@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using MudBlazor;
-using SiMPO.Blazor.Infrastracture.Authentication;
-using SiMPO.Components.Authentication.Login;
-using SiMPO.Components.Authentication.SignUp;
+using Components.Authentication.Login;
+using Components.Authentication.SignUp;
+using Blazor.Infrastracture.Authentication;
 
-namespace SiMPO.Blazor.Shared
+namespace Blazor.Shared
 {
     public partial class NavMenu
     {
@@ -56,7 +56,6 @@ namespace SiMPO.Blazor.Shared
         {
             var dialogOptions = new DialogOptions
             {
-                CloseButton = true,
                 NoHeader = true,
                 DisableBackdropClick = true,
             };

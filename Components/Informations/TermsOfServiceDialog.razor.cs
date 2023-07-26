@@ -1,14 +1,8 @@
 ﻿using Blazored.FluentValidation;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
-using SiMPO.Shared.Contracts.Requests.Authentication;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SiMPO.Components.Informations
+namespace Components.Informations
 {
     public partial class TermsOfServiceDialog
     {

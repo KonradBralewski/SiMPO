@@ -24,8 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Blazor\SiMPO.Blazor.csproj" />
-    <ProjectReference Include="..\Shared\SiMPO.Shared.csproj" />
+    <ProjectReference Include="..\Blazor\Blazor.csproj" />
+    <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

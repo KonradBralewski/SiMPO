@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Infrastructure;
-using SiMPO.Core.Common.Errors;
+using Core.Common.Errors;
 
-namespace SiMPO.Core
+namespace Core
 {
     public static class DependencyInjection
     {

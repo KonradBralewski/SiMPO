@@ -1,10 +1,10 @@
 ﻿using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Authorization;
 using MudBlazor.Services;
-using SiMPO.Blazor.Infrastracture.AppSettings;
-using SiMPO.Blazor.Infrastracture.Authentication;
+using Blazor.Infrastracture.AppSettings;
+using Blazor.Infrastracture.Authentication;
 
-namespace SiMPO.Blazor.Infrastracture
+namespace Blazor.Infrastracture
 {
     public static class DependencyInjection
     {

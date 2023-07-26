@@ -1,4 +1,4 @@
-﻿namespace SiMPO.Blazor.Infrastracture.AppSettings
+﻿namespace Blazor.Infrastracture.AppSettings
 {
     public class UserPreferences
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SiMPO.Core.Common.Errors
+namespace Core.Common.Errors.MightHappen
 {
     public static partial class Errors
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
-namespace SiMPO.Components.Authentication.Login
+namespace Components.Authentication.Login
 {
     public partial class LoginDialog
     {

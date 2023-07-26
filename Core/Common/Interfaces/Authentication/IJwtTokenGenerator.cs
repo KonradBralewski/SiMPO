@@ -1,7 +1,6 @@
-﻿
-using SiMPO.Core.Infrastracture.Persistence.Entities;
+﻿using Core.Infrastracture.Persistence.Entities;
 
-namespace SiMPO.Core.Common.Interfaces.Authentication
+namespace Core.Common.Interfaces.Authentication
 {
     public interface IJwtTokenGenerator
     {

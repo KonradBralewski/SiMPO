@@ -1,7 +1,7 @@
-using SiMPO.Core;
-using SiMPO.Core.Infrastracture;
+using Core;
+using Core.Infrastracture;
 
-namespace SiMPO
+namespace Core
 {
     public class Program
     {

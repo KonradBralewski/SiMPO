@@ -1,10 +1,10 @@
 ﻿using Blazored.FluentValidation;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
-using SiMPO.Components.Informations;
-using SiMPO.Shared.Contracts.Requests.Authentication;
+using Components.Informations;
+using Shared.Contracts.Requests.Authentication;
 
-namespace SiMPO.Components.Authentication.SignUp
+namespace Components.Authentication.SignUp
 {
     public partial class SignUpDialog
     {
@@ -30,6 +30,7 @@ namespace SiMPO.Components.Authentication.SignUp
 
             await DialogService.ShowAsync<TermsOfServiceDialog>("TERMS OF SERVICE", dialogOptions);
         }
+        private void Cancel() => MudDialog.Close(DialogResult.Ok(true));
         private void Submit() => MudDialog.Close(DialogResult.Ok(true));
     }
 }

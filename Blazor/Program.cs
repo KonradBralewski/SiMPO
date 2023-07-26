@@ -1,12 +1,8 @@
-using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using MudBlazor.Services;
-using SiMPO.Blazor;
-using SiMPO.Blazor.Infrastracture;
-using SiMPO.Blazor.Infrastracture.Authentication;
+using Blazor.Infrastracture;
 
-namespace SiMPO.Client
+namespace Blazor
 {
     public class Program
     {

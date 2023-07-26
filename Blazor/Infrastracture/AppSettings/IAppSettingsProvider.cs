@@ -1,7 +1,8 @@
 ﻿using Blazored.LocalStorage;
 using MudBlazor;
+using Blazor.Infrastracture.AppSettings;
 
-namespace SiMPO.Blazor.Infrastracture.AppSettings
+namespace Blazor.Infrastracture.AppSettings
 {
     public interface IAppSettingsProvider
     {

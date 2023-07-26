@@ -2,16 +2,17 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using SiMPO.Core.Infrastracture.Persistence;
-using SiMPO.Core.Infrastracture.Persistence.Entities;
 using Microsoft.EntityFrameworkCore;
-using SiMPO.Core.Infrastracture.Authentication.JWT;
-using SiMPO.Core.Common.Interfaces.Services;
-using SiMPO.Core.Infrastracture.Authentication;
-using SiMPO.Core.Common.Interfaces.Authentication;
-using SiMPO.Core.Infrastracture.Services;
+using Core.Common.Interfaces.Authentication;
+using Core.Common.Interfaces.Services;
+using Core.Infrastracture;
+using Core.Infrastracture.Authentication;
+using Core.Infrastracture.Authentication.JWT;
+using Core.Infrastracture.Persistence;
+using Core.Infrastracture.Persistence.Entities;
+using Core.Infrastracture.Services;
 
-namespace SiMPO.Core.Infrastracture
+namespace Core.Infrastracture
 {
     public static class DependencyInjection
     {

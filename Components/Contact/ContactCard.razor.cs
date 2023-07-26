@@ -1,12 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SiMPO.Components.Contact
+namespace Components.Contact
 {
     public partial class ContactCard
     {

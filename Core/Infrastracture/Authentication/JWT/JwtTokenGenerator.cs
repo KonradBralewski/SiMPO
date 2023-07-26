@@ -3,11 +3,12 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using SiMPO.Core.Common.Interfaces.Services;
-using SiMPO.Core.Common.Interfaces.Authentication;
-using SiMPO.Core.Infrastracture.Persistence.Entities;
+using Core.Common.Interfaces.Authentication;
+using Core.Common.Interfaces.Services;
+using Core.Infrastracture.Authentication.JWT;
+using Core.Infrastracture.Persistence.Entities;
 
-namespace SiMPO.Core.Infrastracture.Authentication.JWT
+namespace Core.Infrastracture.Authentication.JWT
 {
     internal sealed class JwtTokenGenerator : IJwtTokenGenerator
     {

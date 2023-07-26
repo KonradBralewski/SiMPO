@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace SiMPO.Core.Migrations
+namespace Core.Migrations
 {
     public partial class Initial : Migration
     {

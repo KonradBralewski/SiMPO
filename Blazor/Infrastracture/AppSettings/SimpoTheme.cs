@@ -1,6 +1,6 @@
 ﻿using MudBlazor;
 
-namespace SiMPO.Blazor.Infrastracture.AppSettings
+namespace Blazor.Infrastracture.AppSettings
 {
     public class SimpoTheme
     {

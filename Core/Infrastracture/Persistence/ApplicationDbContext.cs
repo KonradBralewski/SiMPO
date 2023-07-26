@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using SiMPO.Core.Infrastracture.Persistence.Entities;
+using Core.Infrastracture.Persistence.Entities;
 
-namespace SiMPO.Core.Infrastracture.Persistence
+namespace Core.Infrastracture.Persistence
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

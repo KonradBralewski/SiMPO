@@ -5,15 +5,15 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
-using SiMPO.Core.Infrastracture.Persistence.Entities;
-using SiMPO.Core.Common.Interfaces.Authentication;
-using SiMPO.Shared.Contracts.Responses.Authentication;
-using SiMPO.Shared.Contracts.Requests.Authentication;
-using SiMPO.Core.Common.Interfaces.Services;
-using SiMPO.Core.Common.Errors;
 using ErrorOr;
+using Shared.Contracts.Requests.Authentication;
+using Shared.Contracts.Responses.Authentication;
+using Core.Common.Errors.MightHappen;
+using Core.Common.Interfaces.Authentication;
+using Core.Common.Interfaces.Services;
+using Core.Infrastracture.Persistence.Entities;
 
-namespace SiMPO.Core.Infrastracture.Authentication
+namespace Core.Infrastracture.Authentication
 {
     public class AuthenticationService : IAuthenticationService
     {
@@ -33,12 +33,12 @@ namespace SiMPO.Core.Infrastracture.Authentication
 
             if(user is null)
             {
-                return Errors.MightHappen.Authentication.InvalidCredentials;
+                return Core.Common.Errors.MightHappen.MightHappen.Authentication.InvalidCredentials;
             }
 
             if(await _userManager.CheckPasswordAsync(user, request.Password) is false)
             {
-                return Errors.MightHappen.Authentication.InvalidCredentials;
+                return Core.Common.Errors.MightHappen.MightHappen.Authentication.InvalidCredentials;
             }
 
             var token = _tokenGenerator.GenerateToken(user);
@@ -54,7 +54,7 @@ namespace SiMPO.Core.Infrastracture.Authentication
 
             if (userSearchResult is not null)
             {
-                return Errors.MightHappen.User.DuplicateEmail;
+                return Core.Common.Errors.MightHappen.MightHappen.User.DuplicateEmail;
             }
 
             // to do requests validation

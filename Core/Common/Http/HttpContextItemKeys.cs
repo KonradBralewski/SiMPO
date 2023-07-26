@@ -1,4 +1,4 @@
-﻿namespace SiMPO.Core.Common.Http
+﻿namespace Core.Common.Http
 {
     public static class HttpContextItemKeys
     {

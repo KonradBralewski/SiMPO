@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MudBlazor;
-using SiMPO.Blazor.Infrastracture.AppSettings;
+using Blazor.Infrastracture.AppSettings;
 
-namespace SiMPO.Blazor.Shared
+namespace Blazor.Shared
 {
     public partial class MainLayout
     {

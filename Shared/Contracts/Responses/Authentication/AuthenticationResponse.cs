@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SiMPO.Shared.Contracts.Responses.Authentication
+namespace Shared.Contracts.Responses.Authentication
 {
     public sealed record AuthenticationResponse(
         string UserId,

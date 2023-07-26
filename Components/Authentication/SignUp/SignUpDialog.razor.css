@@ -1,7 +1,0 @@
-.registerDialogButton{
-    transition: background-color 0.2s ease;
-}
-
-    .registerDialogButton:hover {
-        background-color: #0094ff;
-    }

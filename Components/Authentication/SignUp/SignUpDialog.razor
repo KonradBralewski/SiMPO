@@ -1,3 +1,4 @@
+@using Microsoft.JSInterop;
 <MudDialog ClassContent="">
     <DialogContent>
         <EditForm Model="@_user">
@@ -12,7 +13,21 @@
                             <MudTextField @bind-Value="_passwordConfirmation" Label="Confirm Password" />
                             <MudContainer class="d-flex flex-row justify-center align-center">
                                 <MudCheckBox @bind-Checked="_checkedTOS"/>
-                                <MudText onclick="@ShowTOS" Typo="Typo.h6" Color="Color.Info" Style="align-self: center;">Terms of Service</MudText>
+                                @if (_shouldAnimateTOS)
+                                {
+                                    <Animate Auto="true" Animation="Animations.FadeRight" DelayMilliseconds="100" DurationMilliseconds="200">
+                                        <MudText onclick="@ShowTOS" onmouseout="@OnTermsOfServiceUnhover"
+                                                 Typo="Typo.h6" Color="Color.Info" Style="align-self: center; text-shadow: 0.25px 0.25px;">Terms of Service</MudText>
+                                    </Animate>
+
+                                }
+                                else
+                                {
+                                    <MudText onclick="@ShowTOS" onmouseover="@OnTermsOfServiceHover"
+                                             Typo="Typo.h6" Color="Color.Info" Style="align-self: center;">Terms of Service</MudText>
+                                }
+                                
+                               
                             </MudContainer>
                         </MudCardContent>
                     </MudCard>
@@ -21,7 +36,53 @@
         </EditForm>
     </DialogContent>
     <DialogActions>
-        <MudButton OnClick="Submit" Class="mr-auto ml-auto mud-theme-primary registerDialogButton">Register</MudButton>
-        <MudButton OnClick="Cancel" Class="mr-auto ml-auto mud-theme-error errorDialogButton">Cancel</MudButton>
+        @if (_shouldAnimateRegister)
+        {
+            <MudButton OnClick="Submit" onmouseout="@(() => OnRegisterButtonMouseMove(false))"
+                       Class="mr-auto ml-auto mud-theme-primary registerDialogButton" Style="font-weight: bold; font-family: Verdana, sans-serif;">Register</MudButton>
+        }
+        else
+        {
+            <MudButton OnClick="Submit" onmouseover="@(() => OnRegisterButtonMouseMove(true))"
+                       Class="mr-auto ml-auto mud-theme-primary registerDialogButton" Style="font-family: Verdana, sans-serif;">Register</MudButton>
+        }
+        @if (_shouldAnimateCancel)
+        {
+            <MudButton OnClick="Cancel" onmouseout="@(() => OnCancelButtonMouseMove(false))"
+                       Class="mr-auto ml-auto mud-theme-error errorDialogButton" Style="font-weight: bold; font-family: Verdana, sans-serif;">Cancel</MudButton>
+        }
+        else
+        {
+            <MudButton OnClick="Cancel" onmouseover="@(() => OnCancelButtonMouseMove(true))"
+                       Class="mr-auto ml-auto mud-theme-error errorDialogButton" Style="font-family: Verdana, sans-serif;">Cancel</MudButton>
+        }
     </DialogActions>
-</MudDialog>    
+</MudDialog>
+
+@code{
+    private bool _shouldAnimateRegister;
+    private bool _shouldAnimateCancel;
+
+    private void OnRegisterButtonMouseMove(bool isHovering)
+    {
+        if (isHovering)
+        {
+            _shouldAnimateRegister = true;
+            return;
+        }
+
+        _shouldAnimateRegister = false;
+
+    }
+
+    private void OnCancelButtonMouseMove(bool isHovering)
+    {
+        if (isHovering)
+        {
+            _shouldAnimateCancel = true;
+            return;
+        }
+
+        _shouldAnimateCancel = false;
+    }
+}

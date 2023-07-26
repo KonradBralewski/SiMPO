@@ -1,17 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
 using ErrorOr;
 using Shared.Contracts.Requests.Authentication;
 using Shared.Contracts.Responses.Authentication;
-using Core.Common.Errors.MightHappen;
 using Core.Common.Interfaces.Authentication;
 using Core.Common.Interfaces.Services;
 using Core.Infrastracture.Persistence.Entities;
+using Core.Common.Errors.MightHappen;
 
 namespace Core.Infrastracture.Authentication
 {
@@ -33,12 +27,12 @@ namespace Core.Infrastracture.Authentication
 
             if(user is null)
             {
-                return Core.Common.Errors.MightHappen.MightHappen.Authentication.InvalidCredentials;
+                return Errors.MightHappen.Authentication.InvalidCredentials;
             }
 
             if(await _userManager.CheckPasswordAsync(user, request.Password) is false)
             {
-                return Core.Common.Errors.MightHappen.MightHappen.Authentication.InvalidCredentials;
+                return Errors.MightHappen.Authentication.InvalidCredentials;
             }
 
             var token = _tokenGenerator.GenerateToken(user);
@@ -54,7 +48,7 @@ namespace Core.Infrastracture.Authentication
 
             if (userSearchResult is not null)
             {
-                return Core.Common.Errors.MightHappen.MightHappen.User.DuplicateEmail;
+                return Errors.MightHappen.User.DuplicateEmail;
             }
 
             // to do requests validation

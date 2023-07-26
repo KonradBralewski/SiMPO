@@ -41,7 +41,7 @@ namespace Core.Controllers.Base
             HttpContext.Items[HttpContextItemKeys.Errors] = errors;
 
             /// CUSTOM
-            if (firstError == Core.Common.Errors.MightHappen.MightHappen.Authentication.InvalidCredentials)
+            if (firstError == Errors.MightHappen.Authentication.InvalidCredentials)
             {
                 return Problem(statusCode: StatusCodes.Status401Unauthorized, title: firstError.Description);
             }

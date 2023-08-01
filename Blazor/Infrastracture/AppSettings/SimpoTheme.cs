@@ -17,7 +17,7 @@ namespace Blazor.Infrastracture.AppSettings
             H1 = new H1()
             {
                 FontFamily = new[] { "Montserrat", "Helvetica", "Arial", "sans-serif" },
-                FontSize = "6rem",
+                FontSize = "5.75rem",
                 FontWeight = 300,
                 LineHeight = 1.167,
                 LetterSpacing = "-.01562em"
@@ -25,7 +25,7 @@ namespace Blazor.Infrastracture.AppSettings
             H2 = new H2()
             {
                 FontFamily = new[] { "Montserrat", "Helvetica", "Arial", "sans-serif" },
-                FontSize = "3.75rem",
+                FontSize = "3.5rem",
                 FontWeight = 300,
                 LineHeight = 1.2,
                 LetterSpacing = "-.00833em"
@@ -33,7 +33,7 @@ namespace Blazor.Infrastracture.AppSettings
             H3 = new H3()
             {
                 FontFamily = new[] { "Montserrat", "Helvetica", "Arial", "sans-serif" },
-                FontSize = "3rem",
+                FontSize = "2.75rem",
                 FontWeight = 400,
                 LineHeight = 1.167,
                 LetterSpacing = "0"
@@ -41,7 +41,7 @@ namespace Blazor.Infrastracture.AppSettings
             H4 = new H4()
             {
                 FontFamily = new[] { "Montserrat", "Helvetica", "Arial", "sans-serif" },
-                FontSize = "2.125rem",
+                FontSize = "1.875rem",
                 FontWeight = 400,
                 LineHeight = 1.235,
                 LetterSpacing = ".00735em"
@@ -49,7 +49,7 @@ namespace Blazor.Infrastracture.AppSettings
             H5 = new H5()
             {
                 FontFamily = new[] { "Montserrat", "Helvetica", "Arial", "sans-serif" },
-                FontSize = "1.5rem",
+                FontSize = "1.25rem",
                 FontWeight = 400,
                 LineHeight = 1.334,
                 LetterSpacing = "0"
@@ -57,7 +57,7 @@ namespace Blazor.Infrastracture.AppSettings
             H6 = new H6()
             {
                 FontFamily = new[] { "Montserrat", "Helvetica", "Arial", "sans-serif" },
-                FontSize = "1.25rem",
+                FontSize = "1.00rem",
                 FontWeight = 400,
                 LineHeight = 1.6,
                 LetterSpacing = ".0075em"

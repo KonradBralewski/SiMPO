@@ -4,24 +4,23 @@ using MudBlazor;
 using Components.Authentication.Login;
 using Components.Authentication.SignUp;
 using Blazor.Infrastracture.Authentication;
+using MudBlazor.Services;
 
 namespace Blazor.Shared
 {
     public partial class NavMenu
     {
         [Inject]
-        public AuthenticationStateProvider AuthenticationStateProvider { get; set; } = null!;
+        private AuthenticationStateProvider authenticationStateProvider { get; set; } = null!;
 
         [Inject]
-        public IDialogService DialogService { get; set; } = null!;
+        private IDialogService dialogService { get; set; } = null!;
 
         [Parameter]
         public EventCallback ToggleDarkMode { get; set; }
         [Parameter]
         public bool IsDarkMode { get; set; }
         private string _togglerLabel = null!;
-
-
         protected override void OnInitialized()
         {
             UpdateTogglerLabel();
@@ -44,12 +43,12 @@ namespace Blazor.Shared
 
         private void Logout()
         {
-            ((CustomAuthenticationStateProvider)AuthenticationStateProvider).MarkUserAsLoggedOut();
+            ((CustomAuthenticationStateProvider)authenticationStateProvider).MarkUserAsLoggedOut();
         }
 
         private async Task ShowLoginDialog()
         {
-            await DialogService.ShowAsync<LoginDialog>();
+            await dialogService.ShowAsync<LoginDialog>();
         }
 
         private async Task ShowSignUpDialog()
@@ -60,8 +59,7 @@ namespace Blazor.Shared
                 DisableBackdropClick = true,
             };
 
-            await DialogService.ShowAsync<SignUpDialog>("Sign Up", dialogOptions);
+            await dialogService.ShowAsync<SignUpDialog>("Sign Up", dialogOptions);
         }
-
     }
 }

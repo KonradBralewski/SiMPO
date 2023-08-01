@@ -20,4 +20,8 @@
 	  <ProjectReference Include="..\Components\Components.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\js\" />
+  </ItemGroup>
+
 </Project>

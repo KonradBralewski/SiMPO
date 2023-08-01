@@ -8,10 +8,11 @@
 @inject IAppSettingsProvider _appSettingsProvider
 
 <MudLayout>
-    <MudAppBar Class="p-0 m-0" Elevation="4">
+    <MudAppBar Class="p-0 m-0" Style="max-height: fit-content;" Elevation="4">
         <NavMenu ToggleDarkMode="@ToggleDarkMode" IsDarkMode="@_isDarkMode"/>
     </MudAppBar>
     <MudMainContent>
+        <SmallDeviceNavMenu/>
         <CascadingValue Value="@_appSettingsProvider">
             @Body
         </CascadingValue>

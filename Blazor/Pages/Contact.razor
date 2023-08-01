@@ -3,9 +3,15 @@
 @page "/contact"
 
 <PageTitle>Contact</PageTitle>
-<MudContainer class="d-flex flex-row gap-5 align-center justify-center mt-5">
-    <ContactCard Name="Shakkael"/>
-    <ContactCard Name="Shlee"/>
-    <ContactCard Name="S"/>
-</MudContainer>
+<MudGrid Justify="Justify.Center" Class="mt-3">
+    <MudItem xs="9" md="5">
+        <ContactCard Name="Shakkael" />
+    </MudItem>
+    <MudItem xs="9" md="5">
+        <ContactCard Name="Shlee" />
+    </MudItem>
+    <MudItem xs="9" md="5">
+        <ContactCard Name="S" />
+    </MudItem>
+</MudGrid>
 

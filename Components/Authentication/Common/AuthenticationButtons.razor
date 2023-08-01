@@ -1,0 +1,12 @@
+﻿<MudContainer Class="@ContainerClass" Style="@ContainerStyle">
+    <AuthorizeView>
+            <NotAuthorized>
+                <MudButton Class="@SignInButtonClass" Style="@SignInButtonStyle" OnClick="@ShowLoginDialog" Variant="Variant.Filled" Color="Color.Secondary">Log In</MudButton>
+                <MudButton Class="@SignUpButtonClass" Style="@SignUpButtonStyle" OnClick="@ShowSignUpDialog" Variant="Variant.Filled" Color="Color.Secondary">Sign Up</MudButton>
+            </NotAuthorized>
+            <Authorized>
+                <MudButton OnClick="@Logout"
+                    Class="@LogOutButtonClass" Style="@LogOutButtonStyle">Log out</MudButton>
+            </Authorized>
+    </AuthorizeView>
+</MudContainer>

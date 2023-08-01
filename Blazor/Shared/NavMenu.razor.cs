@@ -10,12 +10,6 @@ namespace Blazor.Shared
 {
     public partial class NavMenu
     {
-        [Inject]
-        private AuthenticationStateProvider authenticationStateProvider { get; set; } = null!;
-
-        [Inject]
-        private IDialogService dialogService { get; set; } = null!;
-
         [Parameter]
         public EventCallback ToggleDarkMode { get; set; }
         [Parameter]
@@ -39,27 +33,6 @@ namespace Blazor.Shared
         private void UpdateTogglerLabel()
         {
             _togglerLabel = "Toggle " + (IsDarkMode ? "Light Mode" : "Dark Mode");
-        }
-
-        private void Logout()
-        {
-            ((CustomAuthenticationStateProvider)authenticationStateProvider).MarkUserAsLoggedOut();
-        }
-
-        private async Task ShowLoginDialog()
-        {
-            await dialogService.ShowAsync<LoginDialog>();
-        }
-
-        private async Task ShowSignUpDialog()
-        {
-            var dialogOptions = new DialogOptions
-            {
-                NoHeader = true,
-                DisableBackdropClick = true,
-            };
-
-            await dialogService.ShowAsync<SignUpDialog>("Sign Up", dialogOptions);
         }
     }
 }

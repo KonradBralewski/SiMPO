@@ -1,0 +1,28 @@
+﻿<MudContainer Class="d-flex d-md-none flex-column mt-6 gap-5 align-center justify-center">
+    <AuthenticationButtons ContainerClass="d-flex d-sm-none flex-row gap-5 mr-0 align-center justify-center"
+                           SignInButtonClass="pa-1"
+                           SignInButtonStyle="width: 125px; height: 50px; font-size: var(--mud-typography-h5-size)"
+                           SignUpButtonClass="pa-1"
+                           SignUpButtonStyle="width: 125px; height: 50px; font-size: var(--mud-typography-h5-size)"
+                           LogOutButtonClass="pa-3"
+                           LogOutButtonStyle="@($"color:{Colors.Red.Default}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px;")" />
+
+    <MudGrid Justify="Justify.Center" Spacing="1">
+        <MudItem xs="5" Style="text-align: center;">
+            <MudLink Href="/" Typo="Typo.h4" Style="font-weight: bold;">Players</MudLink>
+        </MudItem>
+        <MudItem xs="5" Style="text-align: center; margin-top: 0px;">
+            <MudLink Href="/" Typo="Typo.h4" Style="font-weight: bold;">Map</MudLink>
+        </MudItem>
+        <MudIcon />
+        <MudItem xs="5" Style="text-align: center; margin-top: 0px;">
+            <MudLink Href="/" Typo="Typo.h4" Style="font-weight: bold;">Mods</MudLink>
+        </MudItem>
+        <MudItem xs="5" Style="text-align: center; margin-top: 0px;">
+            <MudLink Href="/" Typo="Typo.h4" Style="font-weight: bold;">Forum</MudLink>
+        </MudItem>
+    </MudGrid>
+    <MudLink Href="/contact" Typo="Typo.h4" Style="font-weight: bold; margin-top: -15px;">Contact</MudLink>
+
+    
+</MudContainer>

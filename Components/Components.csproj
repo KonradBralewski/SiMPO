@@ -15,6 +15,7 @@
 	<ItemGroup>
 		<PackageReference Include="Blazored.FluentValidation" Version="2.1.0" />
 		<PackageReference Include="Blazorise.Animate" Version="1.2.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.18" />
 		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.18" />
 		<PackageReference Include="MudBlazor" Version="6.7.0" />
 	</ItemGroup>

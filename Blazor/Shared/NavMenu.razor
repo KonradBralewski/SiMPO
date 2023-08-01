@@ -1,22 +1,27 @@
-﻿<MudLink Href="/" Typo="Typo.h2" Class="mud-palette-primary mr-4 mx-auto">SiMPO</MudLink>
+﻿<MudLink Href="/" Typo="Typo.h2" Class="mud-palette-primary mr-4">SiMPO</MudLink>
 <MudSpacer/>
 @*MD+ THEME SWTITCHER*@
 <MudSwitch @bind-Checked="IsDarkMode" onclick="@ToggleDarkMode" Label="@_togglerLabel" Class="d-none d-md-block" />
 @*MD+ THEME SWTITCHER*@
+@*SM ONLY SIGN IN/UP BUTTONS*@
+<AuthenticationButtons ContainerClass="d-none d-sm-flex d-md-none flex-row gap-5 mr-0 align-center justify-center"
+                       SignInButtonClass="pa-1"
+                       SignInButtonStyle="width: 90px; height: 50px; font-size: var(--mud-typography-h6-size)"
+                       SignUpButtonClass="pa-1"
+                       SignUpButtonStyle="width: 90px; height: 50px; font-size: var(--mud-typography-h6-size)"
+                       LogOutButtonClass="pa-3"
+                       LogOutButtonStyle="@($"color:{Colors.Red.Default}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px;")" />
+@*SM ONLY SIGN IN/UP BUTTONS*@
 @*BELOW MD THEME SWTITCHER*@
-<div class="d-flex flex-row d-md-none gap-5 align-center justify-center">
-    <MudSwitch @bind-Checked="IsDarkMode" onclick="@ToggleDarkMode" Class="d-md-none" />
-    @if(!IsDarkMode)
-    {
-        <MudIcon Class="d-md-none" Icon="@Icons.Material.Filled.ModeNight" Style="@($"color:{Colors.Shades.Black};")" />
-    }
-    else
-    {
-        <MudIcon Class="d-md-none"
-        Icon="@Icons.Material.Filled.WbSunny" Style="@($"color:{Colors.Yellow.Default};")" />
-    }
+<div class="d-flex flex-row d-md-none gap-4 align-center justify-center">
+    <MudIcon Class="d-md-none"
+             Icon="@Icons.Material.Filled.WbSunny" Style="@($"color:{Colors.Yellow.Default}; visibility: {(IsDarkMode ? "visible" : "hidden")};")" />
+    <MudSwitch @bind-Checked="IsDarkMode" onclick="@ToggleDarkMode" Class="d-md-none m-4" Color="Color.Primary" />
+    <MudIcon Class="d-md-none" Icon="@Icons.Material.Filled.ModeNight"
+             Style="@($"color:{Colors.Shades.Black}; visibility: {(IsDarkMode ? "hidden" : "visible")}; margin-left: -27px;")" Size="Size.Small" />
 </div>
 @*BELOW MD THEME SWTITCHER*@
+@*MD+ MAIN NAV LAYOUT*@
 <MudContainer Class="d-none d-md-flex flex-row gap-5 mr-0 align-center justify-center">
     @*LG BREAKPOINT*@
     <MudLink Href="/" Typo="Typo.h5" Style="margin-left: 75px;" Class="d-none d-lg-block">Players</MudLink>
@@ -26,27 +31,30 @@
     <MudLink Href="/contact" Typo="Typo.h5" Class="d-none d-lg-block">Contact</MudLink>
     @*LG BREAKPOINT*@
     @*MD BREAKPOINT*@
-    <MudLink Href="/" Typo="Typo.h6" Style="margin-left: 40px;" Class="d-none d-md-block d-lg-none">Players</MudLink>
+    <MudLink Href="/" Typo="Typo.h6" Style="margin-left: 5px;" Class="d-none d-md-block d-lg-none">Players</MudLink>
     <MudLink Href="/" Typo="Typo.h6" Class="d-none d-md-block d-lg-none">Map</MudLink>
     <MudLink Href="/" Typo="Typo.h6" Class="d-none d-md-block d-lg-none">Mods</MudLink>
     <MudLink Href="/" Typo="Typo.h6" Class="d-none d-md-block d-lg-none">Forum</MudLink>
     <MudLink Href="/contact" Typo="Typo.h6" Class="d-none d-md-block d-lg-none">Contact</MudLink>
     @*MD BREAKPOINT*@
-    <AuthorizeView>
-        <NotAuthorized>
-            @*LG BREAKPOINT*@
-            <MudButton Class="pa-3 d-none d-lg-block ml-auto" Style="width: 125px; height: 50px;" OnClick="@ShowLoginDialog" Variant="Variant.Filled" Color="Color.Secondary">Log In</MudButton>
-            <MudButton Class="pa-3 d-none d-lg-block" Style="width: 125px; height: 50px;" OnClick="@ShowSignUpDialog" Variant="Variant.Filled" Color="Color.Secondary">Sign Up</MudButton>
-            @*MD BREAKPOINT*@
-            @*MD BREAKPOINT*@
-            <MudButton Class="pa-1 d-none d-md-block d-lg-none ml-auto" Style="width: 75px; height: 50px; font-size: var(--mud-typography-h6-size)" OnClick="@ShowLoginDialog" Variant="Variant.Filled" Color="Color.Secondary">Log In</MudButton>
-            <MudButton Class="pa-1 d-none d-md-block d-lg-none" Style="width: 75px; height: 50px; var(--mud-typography-h6-size)" OnClick="@ShowSignUpDialog" Variant="Variant.Filled" Color="Color.Secondary">Sign Up</MudButton>
-            @*MD BREAKPOINT*@
-        </NotAuthorized>
-        <Authorized>
-            <MudButton OnClick="@Logout"
-                Class="pa-3 ml-auto" 
-                Style="@($"color:{Colors.Red.Default}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px;")">Log out</MudButton>
-        </Authorized>
-    </AuthorizeView>
+    @*LG BREAKPOINT*@
+    <AuthenticationButtons 
+                           ContainerClass="d-none d-lg-flex flex-row gap-5 mr-0 align-center justify-end"
+                           SignInButtonClass="pa-3 ml-auto"
+                           SignInButtonStyle="width: 125px; height: 50px;"
+                           SignUpButtonClass="pa-3"
+                           SignUpButtonStyle="width: 125px; height: 50px;"
+                           LogOutButtonClass="pa-3"
+                           LogOutButtonStyle="@($"color:{Colors.Red.Default}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px;")"/>
+    @*LG BREAKPOINT*@
+    @*MD BREAKPOINT*@
+    <AuthenticationButtons ContainerClass="d-none d-md-flex d-lg-none flex-row gap-2 mr-0 ml-0 align-center justify-center"
+                           SignInButtonClass="pa-1"
+                           SignInButtonStyle="width: 80px; height: 50px; font-size: var(--mud-typography-h6-size)"
+                           SignUpButtonClass="pa-1"
+                           SignUpButtonStyle="width: 80px; height: 50px; font-size: var(--mud-typography-h6-size)"
+                           LogOutButtonClass="pa-3"
+                           LogOutButtonStyle="@($"color:{Colors.Red.Default}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px;")"/>
+    @*MD BREAKPOINT*@
 </MudContainer>
+@*MD+ MAIN NAV LAYOUT*@

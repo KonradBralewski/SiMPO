@@ -7,22 +7,108 @@
                            LogOutButtonClass="pa-3"
                            LogOutButtonStyle="@($"color:{Colors.Red.Default}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px;")" />
 
-    <MudGrid Justify="Justify.Center" Spacing="1">
-        <MudItem xs="5" Style="text-align: center;">
-            <MudLink Href="/" Typo="Typo.h4" Style="font-weight: bold;">Players</MudLink>
+    <MudGrid Justify="Justify.Center" Spacing="2">
+        <MudItem xs="6" sm="4" Style="text-align: center;">
+            @*XS Breakpoint*@
+            <MudButton Class="d-inline-flex d-sm-none"
+                       Href="/contact"
+                       Variant="Variant.Filled"
+                       EndIcon="@Icons.Material.Filled.EmojiPeople"
+                       Color="Color.Primary"
+                       Style=@($"font-weight: bold; width: {xsBreakpointButtonMaxWidth};")>
+                Players
+            </MudButton>
+            @*XS Breakpoint*@
+            @*SM Breakpoint*@
+            <MudButton Class="d-none d-sm-inline-flex d-md-none"
+                       Href="/contact"
+                       Variant="Variant.Filled"
+                       EndIcon="@Icons.Material.Filled.EmojiPeople"
+                       Color="Color.Primary"
+                       Style=@($"font-weight: bold; width: {smBreakpointButtonMaxWidth};")>
+                Players
+            </MudButton>
+            @*SM Breakpoint*@
         </MudItem>
-        <MudItem xs="5" Style="text-align: center; margin-top: 0px;">
-            <MudLink Href="/" Typo="Typo.h4" Style="font-weight: bold;">Map</MudLink>
+        <MudItem xs="6" sm="4" Style="text-align: center; margin-top: 0px;">
+            @*XS Breakpoint*@
+            <MudButton Class="d-inline-flex d-sm-none"
+                       Href="/contact"
+                       Variant="Variant.Filled"
+                       EndIcon="@Icons.Material.Filled.Map"
+                       Color="Color.Primary"
+                       Style=@($"font-weight: bold; width: {xsBreakpointButtonMaxWidth};")>
+                Map
+            </MudButton>
+            @*XS Breakpoint*@
+            @*SM Breakpoint*@
+            <MudButton Class="d-none d-sm-inline-flex d-md-none"
+                       Href="/contact"
+                       Variant="Variant.Filled"
+                       EndIcon="@Icons.Material.Filled.Map"
+                       Color="Color.Primary"
+                       Style=@($"font-weight: bold; width: {smBreakpointButtonMaxWidth};")>
+                Map
+            </MudButton>
+            @*SM Breakpoint*@
         </MudItem>
-        <MudIcon />
-        <MudItem xs="5" Style="text-align: center; margin-top: 0px;">
-            <MudLink Href="/" Typo="Typo.h4" Style="font-weight: bold;">Mods</MudLink>
+        <MudItem xs="6" sm="4" Style="text-align: center; margin-top: 0px;">
+            @*XS Breakpoint*@
+            <MudButton Class="d-inline-flex d-sm-none"
+                       Href="/contact"
+                       Variant="Variant.Filled"
+                       EndIcon="@Icons.Material.Filled.MenuBook"
+                       Color="Color.Primary"
+                       Style=@($"font-weight: bold; width: {xsBreakpointButtonMaxWidth};")>
+
+                Mods
+            </MudButton>
+            @*XS Breakpoint*@
+            @*SM Breakpoint*@
+            <MudButton Class="d-none d-sm-inline-flex d-md-none"
+                       Href="/contact"
+                       Variant="Variant.Filled"
+                       EndIcon="@Icons.Material.Filled.MenuBook"
+                       Color="Color.Primary"
+                       Style=@($"font-weight: bold; width: {smBreakpointButtonMaxWidth};")>
+
+                Mods
+            </MudButton>
+            @*SM Breakpoint*@
         </MudItem>
-        <MudItem xs="5" Style="text-align: center; margin-top: 0px;">
-            <MudLink Href="/" Typo="Typo.h4" Style="font-weight: bold;">Forum</MudLink>
+        <MudItem xs="6" sm="4" Style="text-align: center; margin-top: 0px;">
+            @*XS Breakpoint*@
+            <MudButton Class="d-inline-flex d-sm-none"
+                       Href="/contact"
+                       Variant="Variant.Filled"
+                       EndIcon="@Icons.Material.Filled.ShoppingCart"
+                       Color="Color.Primary"
+                       Style=@($"font-weight: bold; width: {xsBreakpointButtonMaxWidth};")>
+                Shop
+            </MudButton>
+            @*XS Breakpoint*@
+            @*SM Breakpoint*@
+            <MudButton Class="d-none d-sm-inline-flex d-md-none"
+                       Href="/contact"
+                       Variant="Variant.Filled"
+                       EndIcon="@Icons.Material.Filled.ShoppingCart"
+                       Color="Color.Primary"
+                       Style=@($"font-weight: bold; width: {smBreakpointButtonMaxWidth};")>
+                Shop
+            </MudButton>
+            @*SM Breakpoint*@
+        </MudItem>
+        <MudItem sm="4" Class="d-none d-sm-block d-md-none">
+            <MudButton Href="/contact" Style=@($"font-weight: bold; width: {smBreakpointButtonMaxWidth};")
+                       Variant="Variant.Filled" Color="Color.Primary" EndIcon="@Icons.Material.Filled.ContactSupport">Contact</MudButton>
         </MudItem>
     </MudGrid>
-    <MudLink Href="/contact" Typo="Typo.h4" Style="font-weight: bold; margin-top: -15px;">Contact</MudLink>
+    <MudButton Class="d-inline-flex d-sm-none" Href="/contact" Style=@($"font-weight: bold; margin-top: -8px; width: {xsBreakpointButtonMaxWidth};")
+            Variant="Variant.Filled" Color="Color.Primary" EndIcon="@Icons.Material.Filled.ContactSupport">Contact</MudButton>
 
     
 </MudContainer>
+@code {
+    private readonly string xsBreakpointButtonMaxWidth = "120px";
+    private readonly string smBreakpointButtonMaxWidth = "190px";
+}

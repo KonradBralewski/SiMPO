@@ -85,7 +85,8 @@ namespace Blazor.Infrastracture.AppSettings
             TextPrimary = Colors.Shades.White,
             Primary = Colors.Purple.Accent3,
             Secondary = Colors.Purple.Lighten1,
-            Background = Colors.Grey.Darken3
+            Background = Colors.Grey.Darken3,
+             
         };
 
         public static MudTheme CustomTheme = new MudTheme()

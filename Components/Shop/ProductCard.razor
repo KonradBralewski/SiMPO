@@ -1,0 +1,33 @@
+@page "/productCard/{name?}"
+@page "/productCard/{price?}"
+@page "/productCard/{description?}"
+@page "/productCard/{image?}"
+
+@inherits MudCardDerrived;
+
+<MudCard>
+    <MudCardHeader Class="@MudCardHeaderClass" Style="@MudCardHeaderStyle">
+        <CardHeaderContent>
+            @if(Image is null)
+            {
+                // TO DO: NOT FOUND IMAGE
+            }
+            else
+            {
+                // TODO: Receive image from API (probably image itself will be hosted and returned as URL.)
+            }
+            <MudText Typo="Typo.h5">@Name</MudText>
+            <MudContainer Class="d-flex flex-row align-center justify-center gap-3 mt-2">
+                <MudText Typo="Typo.h5">@Price</MudText>
+                <MudImage Src="images/blazorDefaultLoading/simpoLogo.png" Fluid="true" Width="75" Alt="SiMPO" Style="border-radius: 50px;"/>
+                <MudText Typo="Typo.h5">TOKENS</MudText>
+            </MudContainer>
+        </CardHeaderContent>
+    </MudCardHeader>
+    <MudCardContent Class="@MudCardContentClass" Style="@MudCardContentStyle">
+        <MudText>@Description</MudText>
+    </MudCardContent>
+    <MudCardActions Class="@MudCardActionsClass" Style="@MudCardActionsStyle">
+        <MudButton Disabled=@_shouldDisableCard Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.ShoppingCart">Buy</MudButton>
+    </MudCardActions>
+</MudCard>

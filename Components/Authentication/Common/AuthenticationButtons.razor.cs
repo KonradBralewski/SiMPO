@@ -26,6 +26,10 @@ namespace Components.Authentication.Common
         public string LogOutButtonClass { get; set; } = null!;
         [Parameter]
         public string LogOutButtonStyle { get; set; } = null!;
+        [Parameter]
+        public string ProfileButtonClass { get; set; } = null!;
+        [Parameter]
+        public string ProfileButtonStyle { get; set; } = null!;
         [Inject]
         private AuthenticationStateProvider authenticationStateProvider { get; set; } = null!;
 

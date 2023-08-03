@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Components.ComponentsCommonAbstraction;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
 namespace Components.Contact

@@ -15,5 +15,9 @@ namespace Shared.Contracts.Requests.Authentication
         public string Email { get; set; } = null!;
         [Required]
         public string Password { get; set; } = null!;
+        [Required]
+        public string Description { get; set; } = null!;
+        [Required]
+        public string DiscordLink { get; set; } = null!;
     }
 }

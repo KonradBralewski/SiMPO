@@ -76,7 +76,7 @@ namespace Blazor.Infrastracture.AppSettings
         {
             TextPrimary = Colors.Shades.Black,
             Primary = Colors.Green.Lighten2,
-            SecondaryLighten = Colors.Red.Lighten2,
+            Secondary = Colors.Green.Darken2,
             Background = Colors.Indigo.Lighten4
         };
 
@@ -84,6 +84,7 @@ namespace Blazor.Infrastracture.AppSettings
         {
             TextPrimary = Colors.Shades.White,
             Primary = Colors.Purple.Accent3,
+            Secondary = Colors.Purple.Lighten1,
             Background = Colors.Grey.Darken3
         };
 

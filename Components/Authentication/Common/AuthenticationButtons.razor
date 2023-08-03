@@ -5,7 +5,9 @@
                 <MudButton Class="@SignUpButtonClass" Style="@SignUpButtonStyle" OnClick="@ShowSignUpDialog" Variant="Variant.Filled" Color="Color.Secondary">Sign Up</MudButton>
             </NotAuthorized>
             <Authorized>
-                <MudButton OnClick="@Logout"
+            <MudButton Href="/profile" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.SettingsAccessibility"
+                       Class="@ProfileButtonClass" Style="@ProfileButtonStyle">Profile</MudButton>
+                <MudButton OnClick="@Logout" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Logout"
                     Class="@LogOutButtonClass" Style="@LogOutButtonStyle">Log out</MudButton>
             </Authorized>
     </AuthorizeView>

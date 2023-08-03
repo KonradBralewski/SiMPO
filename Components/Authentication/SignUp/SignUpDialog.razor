@@ -7,10 +7,12 @@
                 <MudItem>
                     <MudCard>
                         <MudCardContent>
-                            <MudTextField @bind-Value="_user.Nickname" Label="Nickname" />
-                            <MudTextField @bind-Value="_user.Email" Label="Email" />
-                            <MudTextField @bind-Value="_user.Password" Label="Password" />
-                            <MudTextField @bind-Value="_passwordConfirmation" Label="Confirm Password" />
+                            <MudTextField @bind-Value="_user.Nickname" Label="Nickname" InputType="InputType.Text" />
+                            <MudTextField @bind-Value="_user.Email" Label="Email" InputType="InputType.Email" />
+                            <MudTextField @bind-Value="_user.Password" Label="Password" InputType="InputType.Password"/>
+                            <MudTextField @bind-Value="_passwordConfirmation" Label="Confirm Password" InputType="InputType.Password" />
+                            <MudTextField @bind-Value="_user.Description" Label="Description" InputType="InputType.Text" />
+                            <MudTextField @bind-Value="_user.DiscordLink" Label="Discord Link" InputType="InputType.Url"/>
                             <MudContainer class="d-flex flex-row justify-center align-center">
                                 <MudCheckBox @bind-Checked="_checkedTOS"/>
                                 @if (_shouldAnimateTOS)

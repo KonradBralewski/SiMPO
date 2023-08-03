@@ -5,13 +5,15 @@
                            SignUpButtonClass="pa-1"
                            SignUpButtonStyle="width: 125px; height: 50px; font-size: var(--mud-typography-h5-size)"
                            LogOutButtonClass="pa-3"
-                           LogOutButtonStyle="@($"color:{Colors.Red.Default}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px;")" />
+                           LogOutButtonStyle="@($"color:{Colors.Red.Default}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px;")"
+                           ProfileButtonClass="pa-3"
+                           ProfileButtonStyle="@($"color:{Colors.Lime.Accent1}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px;")" />
 
     <MudGrid Justify="Justify.Center" Spacing="2">
         <MudItem xs="6" sm="4" Style="text-align: center;">
             @*XS Breakpoint*@
             <MudButton Class="d-inline-flex d-sm-none"
-                       Href="/contact"
+                       Href="/players"
                        Variant="Variant.Filled"
                        EndIcon="@Icons.Material.Filled.EmojiPeople"
                        Color="Color.Primary"
@@ -21,7 +23,7 @@
             @*XS Breakpoint*@
             @*SM Breakpoint*@
             <MudButton Class="d-none d-sm-inline-flex d-md-none"
-                       Href="/contact"
+                       Href="/players"
                        Variant="Variant.Filled"
                        EndIcon="@Icons.Material.Filled.EmojiPeople"
                        Color="Color.Primary"
@@ -33,7 +35,8 @@
         <MudItem xs="6" sm="4" Style="text-align: center; margin-top: 0px;">
             @*XS Breakpoint*@
             <MudButton Class="d-inline-flex d-sm-none"
-                       Href="/contact"
+                       Href="https://www.google.com/"
+                       Target="_blank"
                        Variant="Variant.Filled"
                        EndIcon="@Icons.Material.Filled.Map"
                        Color="Color.Primary"
@@ -43,7 +46,8 @@
             @*XS Breakpoint*@
             @*SM Breakpoint*@
             <MudButton Class="d-none d-sm-inline-flex d-md-none"
-                       Href="/contact"
+                       Href="https://www.google.com/"
+                       Target="_blank"
                        Variant="Variant.Filled"
                        EndIcon="@Icons.Material.Filled.Map"
                        Color="Color.Primary"
@@ -52,10 +56,14 @@
             </MudButton>
             @*SM Breakpoint*@
         </MudItem>
+        <MudContainer Style="width: 100%; height: fit-content;" Class="d-flex d-sm-none align-center justify-center">
+            <MudButton Class="d-flex d-sm-none" Href="/contact" Style=@($"font-weight: bold; width: {xsBreakpointButtonMaxWidth};")
+                       Variant="Variant.Filled" Color="Color.Primary" EndIcon="@Icons.Material.Filled.ContactSupport">Contact</MudButton>
+        </MudContainer>
         <MudItem xs="6" sm="4" Style="text-align: center; margin-top: 0px;">
             @*XS Breakpoint*@
             <MudButton Class="d-inline-flex d-sm-none"
-                       Href="/contact"
+                       Href="/mods"
                        Variant="Variant.Filled"
                        EndIcon="@Icons.Material.Filled.MenuBook"
                        Color="Color.Primary"
@@ -66,7 +74,7 @@
             @*XS Breakpoint*@
             @*SM Breakpoint*@
             <MudButton Class="d-none d-sm-inline-flex d-md-none"
-                       Href="/contact"
+                       Href="/mods"
                        Variant="Variant.Filled"
                        EndIcon="@Icons.Material.Filled.MenuBook"
                        Color="Color.Primary"
@@ -79,7 +87,7 @@
         <MudItem xs="6" sm="4" Style="text-align: center; margin-top: 0px;">
             @*XS Breakpoint*@
             <MudButton Class="d-inline-flex d-sm-none"
-                       Href="/contact"
+                       Href="/shop"
                        Variant="Variant.Filled"
                        EndIcon="@Icons.Material.Filled.ShoppingCart"
                        Color="Color.Primary"
@@ -89,7 +97,7 @@
             @*XS Breakpoint*@
             @*SM Breakpoint*@
             <MudButton Class="d-none d-sm-inline-flex d-md-none"
-                       Href="/contact"
+                       Href="/shop"
                        Variant="Variant.Filled"
                        EndIcon="@Icons.Material.Filled.ShoppingCart"
                        Color="Color.Primary"
@@ -103,9 +111,6 @@
                        Variant="Variant.Filled" Color="Color.Primary" EndIcon="@Icons.Material.Filled.ContactSupport">Contact</MudButton>
         </MudItem>
     </MudGrid>
-    <MudButton Class="d-inline-flex d-sm-none" Href="/contact" Style=@($"font-weight: bold; margin-top: -8px; width: {xsBreakpointButtonMaxWidth};")
-            Variant="Variant.Filled" Color="Color.Primary" EndIcon="@Icons.Material.Filled.ContactSupport">Contact</MudButton>
-
     
 </MudContainer>
 @code {

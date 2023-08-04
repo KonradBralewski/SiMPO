@@ -10,6 +10,10 @@ namespace Components.ComponentsCommonAbstraction
     public abstract class MudCardDerrived : ComponentBase
     {
         [Parameter]
+        public virtual string MudCardClass { get; set; } = null!;
+        [Parameter]
+        public string MudCardStyle { get; set; } = null!;
+        [Parameter]
         public virtual string MudCardHeaderClass { get; set; } = null!;
         [Parameter]
         public string MudCardHeaderStyle { get; set; } = null!;

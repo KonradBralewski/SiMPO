@@ -8,31 +8,23 @@ namespace Blazor.Pages
         [CascadingParameter]
         private IAppSettingsProvider _appSettingsProvider { get; set; } = null!;
 
-        private string _pageBackgroundLight = "images/indexPageBackground/indexBackgroundLight.png";
-        private string _pageBackgroundDark = "images/indexPageBackground/indexBackgroundDark.png";
-
-        private string correctPath = null!;
+        private bool _isDarkMode;
 
         protected override async Task OnInitializedAsync()
         {
             _appSettingsProvider.OnSettingsChanged += this.OnChange;
-            correctPath = await GetBackgroundPath();
+            _isDarkMode = await GetDarkMode();
         }
 
-        private async Task<string> GetBackgroundPath()
+        private async Task<bool> GetDarkMode()
         {
             var preferences = await _appSettingsProvider!.GetUserPreferences();
 
-            if (preferences.isDarkMode)
-            {
-                return _pageBackgroundDark;
-            }
-
-            return _pageBackgroundLight;
+            return preferences.isDarkMode;
         }
         private async void OnChange(object? sender, EventArgs eventArgs)
         {
-            correctPath = await GetBackgroundPath();
+            _isDarkMode = await GetDarkMode();
             await this.InvokeAsync(StateHasChanged);
         }
 

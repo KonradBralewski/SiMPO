@@ -1,4 +1,5 @@
 ﻿@using Blazor.Infrastracture.AppSettings;
+@using Components.Contact;
 
 @page "/"
 
@@ -6,12 +7,43 @@
 
 @*MD+ BREAKPOINT LAYOUT*@
 <div class="d-none d-md-flex justify-center" style="width: 100vw; height: 100vh;">
+    @if(_isDarkMode)
+    {
     <MudImage Style="width: 100%; height: 100%;"
-    Src="@correctPath"/>
+        Src="images/indexPageBackground/indexBackgroundDark.png" />
+    }
+    else
+    {
+        <MudImage Style="width: 100%; height: 100%;"
+                  Src="images/indexPageBackground/indexBackgroundLight.png" />
+    }
+
 </div>
 @*MD+ BREAKPOINT LAYOUT*@
 @*BELOW MD BREAKPOINT LAYOUT*@
-<div class="d-xs-flex d-md-none justify-center">
-    <MudText>test</MudText>
+<div class="d-xs-flex d-md-none justify-center align-center my-6" style="height: 100%;">
+    @if(_isDarkMode)
+    {
+        
+        <MudImage Style="width: 100%; height: 100%;" Class="mt-4" Src="images/indexPageBackground/indexBackgroundDark.png" 
+        ObjectFit="ObjectFit.Contain" Elevation="4" ObjectPosition="ObjectPosition.Center"/>
+        <MudImage Style="width: 100%; height: 100%;" Class="mt-4" Src="images/indexPageBackground/indexSecondBackgroundDark.png"
+                  ObjectFit="ObjectFit.Contain" Elevation="4" ObjectPosition="ObjectPosition.Center" />
+    }
+    else
+    {
+        <MudImage Style="width: 100%; height: 100%;" Class="mt-4" Src="images/indexPageBackground/indexBackgroundLight.png"
+                  ObjectFit="ObjectFit.Contain" Elevation="4" ObjectPosition="ObjectPosition.Center" />
+        <MudImage Style="width: 100%; height: 100%;" Class="mt-4" Src="images/indexPageBackground/indexSecondBackgroundLight.png"
+                  ObjectFit="ObjectFit.Contain" Elevation="4" ObjectPosition="ObjectPosition.Center" />
+    }
+    @*SM BREAKPOINT*@
+    <ServerInvitationCard MudCardClass="d-none d-sm-block d-md-none mt-4 mx-auto" MudCardStyle="width: 450px;" MudCardHeaderStyle="text-align: center;"
+                          MudCardContentClass="justify-center align-center d-flex flex-column pt-0 gap-2" MudCardContentStyle="text-align: center;" />
+    @*SM BREAKPOINT*@
+    @*XS BREAKPOINT*@
+    <ServerInvitationCard MudCardClass="d-block d-sm-none mt-4 mx-auto" MudCardStyle="width: 250px;" MudCardHeaderStyle="text-align: center;"
+                          MudCardContentClass="justify-center align-center d-flex flex-column pt-0 gap-2" MudCardContentStyle="text-align: center;" />
+    @*XS BREAKPOINT*@
 </div>
 @*BELOW MD BREAKPOINT LAYOUT*@

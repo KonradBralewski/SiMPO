@@ -75,16 +75,18 @@ namespace Blazor.Infrastracture.AppSettings
         private static PaletteLight DefaultPaletteLight = new PaletteLight()
         {
             TextPrimary = Colors.Shades.Black,
-            Primary = Colors.Green.Lighten2,
-            Secondary = Colors.Green.Darken2,
+            Primary = Colors.Shades.White,
+            Secondary = "#2AA7A9",
+            Tertiary = Colors.Shades.Black,
             Background = Colors.Indigo.Lighten4
         };
 
         private static PaletteDark DefaultPaletteDark = new PaletteDark()
         {
             TextPrimary = Colors.Shades.White,
-            Primary = Colors.Purple.Accent3,
+            Primary = Colors.Shades.Black,
             Secondary = Colors.Purple.Lighten1,
+            Tertiary = Colors.Shades.White,
             Background = Colors.Grey.Darken3,
              
         };

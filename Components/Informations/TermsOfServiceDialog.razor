@@ -1,9 +1,11 @@
-<MudDialog>
+<MudDialog Class="p-30">
     <DialogContent>
-        <MudText>TERMS OF SERVICE</MudText>
         <MudText>NO RULES BASICALLY</MudText>
     </DialogContent>
     <DialogActions>
-        <MudButton Color="MudBlazor.Color.Primary" OnClick="Submit" Class="mr-auto ml-auto">ACCEPT</MudButton>
+        <MudButton OnClick="Accept" Class="mr-auto ml-auto"
+                   Style="font-family: Verdana, sans-serif; background-color: lightgreen;">Accept</MudButton>
+        <MudButton OnClick="Cancel" Class="mr-auto ml-auto mud-theme-error"
+                   Style="font-family: Verdana, sans-serif;">Cancel</MudButton>
     </DialogActions>
 </MudDialog>

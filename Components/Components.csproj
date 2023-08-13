@@ -6,6 +6,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
 	<GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+	<UseWPF>False</UseWPF>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>$(DefineConstants);TRACE;DEBUG;</DefineConstants>
   </PropertyGroup>
 
 	<ItemGroup>
@@ -13,7 +18,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Blazored.FluentValidation" Version="2.1.0" />
+		<PackageReference Include="FluentValidation" Version="11.6.0" />
 		<PackageReference Include="Blazorise.Animate" Version="1.2.4" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.18" />
 		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.18" />
@@ -30,6 +35,10 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Shared\Shared.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Common\" />
 	</ItemGroup>
 
 </Project>

@@ -1,5 +1,4 @@
-﻿using Blazored.FluentValidation;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
 namespace Components.Informations
@@ -8,6 +7,7 @@ namespace Components.Informations
     {
         [CascadingParameter]
         public MudDialogInstance MudDialog { get; set; } = null!;
-        private void Submit() => MudDialog.Close(DialogResult.Ok(true));
+        private void Accept() => MudDialog.Close(DialogResult.Ok(true));
+        private void Cancel() => MudDialog.Cancel();
     }
 }

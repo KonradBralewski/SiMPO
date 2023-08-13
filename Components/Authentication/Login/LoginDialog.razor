@@ -1,5 +1,24 @@
-<MudDialog>
+<MudDialog ClassContent="">
     <DialogContent>
-        <MudText>PLEASE LOG IN</MudText>
+        <MudForm Model="@_loginFormData" @ref="@_mudForm" Validation="@(_loginFormDataValidator.ValidateValue)" ValidationDelay="0">
+            <MudGrid>
+                <MudItem>
+                    <MudCard>
+                        <MudCardContent>
+                            <MudTextField @bind-Value="_loginFormData.Email" For="@(() => _loginFormData.Email)"
+                                Label="Email" InputType="InputType.Email" MaxLength="15"/>
+                            <MudTextField @bind-Value="_loginFormData.Password" For="@(() => _loginFormData.Password)"
+                                Label="Password" InputType="InputType.Password" MaxLength="15"/>
+                        </MudCardContent>
+                    </MudCard>
+                </MudItem>
+            </MudGrid>
+        </MudForm>
     </DialogContent>
+    <DialogActions>
+            <MudButton OnClick="@Submit" Class="mr-auto ml-auto mud-theme-secondary"
+                Style="font-family: Verdana, sans-serif;">Login</MudButton>
+            <MudButton OnClick="@Cancel" Class="mr-auto ml-auto mud-theme-error"
+                Style="font-family: Verdana, sans-serif;">Cancel</MudButton>
+    </DialogActions>
 </MudDialog>

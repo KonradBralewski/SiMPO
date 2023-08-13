@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 using MudBlazor.Services;
 using Blazor.Infrastracture.AppSettings;
 using Blazor.Infrastracture.Authentication;
+using Shared.Validation.Validators;
 
 namespace Blazor.Infrastracture
 {
@@ -15,6 +16,8 @@ namespace Blazor.Infrastracture
 
             services.AddScoped<IAppSettingsProvider, AppSettingsProvider>();
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+
+            services.AddValidators();
 
             return services;
         }

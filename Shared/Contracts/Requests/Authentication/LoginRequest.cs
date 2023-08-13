@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Shared.Contracts.Requests.Authentication
+﻿namespace Shared.Contracts.Requests.Authentication
 {
-    public sealed class LoginRequest
-    {
-        [Required]
-        public string Email { get; set; } = null!;
-        [Required]
-        public string Password { get; set; } = null!;
-    }
+    public sealed record LoginRequest(string Email,
+                                      string Password);
 }

@@ -3,11 +3,15 @@ using MudBlazor;
 using Components.Informations;
 using Shared.Contracts.Forms.Authentication;
 using Shared.Validation.Validators.Forms.Authentication;
+using Microsoft.JSInterop;
 
 namespace Components.Authentication.SignUp
 {
     public partial class SignUpDialog
     {
+        [Inject]
+        public IJSRuntime JSRuntime { get; set; } = null!;
+
         [Inject]
         private RegisterFormDataValidator _registerRequestValidator { get; set; } = null!;
 
@@ -18,6 +22,8 @@ namespace Components.Authentication.SignUp
         public MudDialogInstance MudDialog { get; set; } = null!;
 
         private MudForm _mudForm = null!;
+
+        private MudCheckBox<bool> _termsOfServiceCheckbox = null!;
 
         private RegisterFormData _registerFormData = null!;
 
@@ -30,6 +36,7 @@ namespace Components.Authentication.SignUp
             if (_registerFormData.AcceptedTermsOfService)
             {
                 _registerFormData.AcceptedTermsOfService = false;
+                await _termsOfServiceCheckbox.Validate();
                 StateHasChanged();
 
                 return;
@@ -49,6 +56,7 @@ namespace Components.Authentication.SignUp
             if(result.Canceled)
             {
                 _registerFormData.AcceptedTermsOfService = false;
+                await _termsOfServiceCheckbox.Validate();
                 StateHasChanged();
 
                 return;
@@ -58,6 +66,7 @@ namespace Components.Authentication.SignUp
             if((bool)result.Data == true)
             {
                 _registerFormData.AcceptedTermsOfService = true;
+                await _termsOfServiceCheckbox.Validate();
                 StateHasChanged();
             }
         }

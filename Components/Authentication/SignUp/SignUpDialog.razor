@@ -20,8 +20,8 @@
                             <MudTextField @bind-Value="_registerFormData.DiscordId" 
                                 For="@(() => _registerFormData.DiscordId)" Label="Discord Id" InputType="InputType.Url" />
                             <MudContainer class="d-flex flex-column justify-center align-center">
-                                <MudCheckBox @bind-Checked="_registerFormData.AcceptedTermsOfService" 
-                                    Class="d-flex flex-row justify-center align-center" 
+                                <MudCheckBox @bind-Checked="_registerFormData.AcceptedTermsOfService" @ref="@_termsOfServiceCheckbox"
+                                    Class="d-flex flex-row justify-center align-center" DisableRipple
                                 onclick="@handleTermsOfServiceCheckbox" ReadOnly For="@(() => _registerFormData.AcceptedTermsOfService)"/>
                                 <MudText onclick="@handleTermsOfServiceCheckbox" Typo="Typo.h6" Color="Color.Info"
                                         Style="align-self: center;">Terms of Service</MudText>

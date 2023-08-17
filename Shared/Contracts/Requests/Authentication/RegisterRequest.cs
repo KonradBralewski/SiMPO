@@ -1,8 +1,10 @@
-﻿namespace Shared.Contracts.Requests.Authentication
+﻿using Shared.Validation.Abstraction;
+
+namespace Shared.Contracts.Requests.Authentication
 {
     public sealed record RegisterRequest(string Nickname,
                                          string Email,
                                          string Password,
                                          string Description,
-                                         string DiscordId);
+                                         string DiscordId) : IValidatable;
 }

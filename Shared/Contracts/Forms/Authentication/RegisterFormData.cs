@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shared.Validation.Abstraction;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Shared.Contracts.Forms.Authentication
 {
-    public class RegisterFormData
+    public class RegisterFormData : IValidatable
     {
         public string Nickname { get; set; } = null!;
         public string Email { get; set; } = null!;

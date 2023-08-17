@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Shared.Contracts.Requests.Authentication;
 using Core.Common.Interfaces.Services;
 using Core.Controllers.Base;
+using Core.Controllers.Filters;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -19,6 +20,7 @@ namespace Core.Controllers
             _authenticationService = authenticationService;
         }
 
+        [ModelValidator]
         [HttpPost("register")]
         public async Task<IActionResult> RegisterAsync([FromBody] RegisterRequest request)
         {
@@ -28,7 +30,7 @@ namespace Core.Controllers
                 authResult => Ok(authResult),
                 errors => Problem(errors));
         }
-
+        [ModelValidator]
         [HttpPost("login")]
         public async Task<IActionResult> LoginAsync([FromBody] LoginRequest request)
         {

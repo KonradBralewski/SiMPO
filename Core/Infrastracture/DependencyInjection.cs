@@ -11,6 +11,7 @@ using Core.Infrastracture.Authentication.JWT;
 using Core.Infrastracture.Persistence;
 using Core.Infrastracture.Persistence.Entities;
 using Core.Infrastracture.Services;
+using Shared.Validation.Validators;
 
 namespace Core.Infrastracture
 {
@@ -18,6 +19,7 @@ namespace Core.Infrastracture
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, ConfigurationManager configuration)
         {
+            services.AddValidators();
             services.AddPersistance(configuration);
             services.ConfigureIdentity();
             services.AddAuth(configuration);

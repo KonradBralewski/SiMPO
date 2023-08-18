@@ -4,11 +4,16 @@ using Components.Informations;
 using Shared.Contracts.Forms.Authentication;
 using Shared.Validation.Validators.Forms.Authentication;
 using Microsoft.JSInterop;
+using Shared.Abstraction.Managers.Identity;
+using Shared.Contracts.Requests.Authentication;
 
 namespace Components.Authentication.SignUp
 {
     public partial class SignUpDialog
     {
+        [Inject]
+        private IUserManager _userManager { get; set; } = null!;
+
         [Inject]
         public IJSRuntime JSRuntime { get; set; } = null!;
 
@@ -62,18 +67,25 @@ namespace Components.Authentication.SignUp
                 return;
             }
 
-            // true is being passed after pressing the accept button
-            if((bool)result.Data == true)
-            {
-                _registerFormData.AcceptedTermsOfService = true;
-                await _termsOfServiceCheckbox.Validate();
-                StateHasChanged();
-            }
+            _registerFormData.AcceptedTermsOfService = true;
+
+            await _termsOfServiceCheckbox.Validate();
+            StateHasChanged();
+
         }
         private void Cancel() => MudDialog.Close(DialogResult.Ok(true));
-        private void Submit()
+        private async Task Submit()
         {
-            _mudForm.Validate();
+            await _mudForm.Validate();
+
+            if (_mudForm.IsValid)
+            {
+                await _userManager.RegisterUserAsync(new RegisterRequest(_registerFormData.Nickname,
+                                                                         _registerFormData.Email,
+                                                                         _registerFormData.Password,
+                                                                         _registerFormData.Description,
+                                                                         _registerFormData.DiscordId));
+            }
         }
     }
 }

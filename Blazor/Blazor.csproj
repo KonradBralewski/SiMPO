@@ -9,9 +9,11 @@
   <ItemGroup>
     <PackageReference Include="Blazored.LocalStorage" Version="4.3.0" />
     <PackageReference Include="Blazorise.Animate" Version="1.2.4" />
+    <PackageReference Include="ErrorOr" Version="1.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.18" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.16" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.16" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
     <PackageReference Include="MudBlazor" Version="6.7.0" />
   </ItemGroup>
 

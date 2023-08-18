@@ -8,17 +8,18 @@
                     <MudCard>
                         <MudCardContent>
                             <MudTextField @bind-Value="_registerFormData.Nickname"
-                                For="@(() => _registerFormData.Nickname)" Label="Nickname" InputType="InputType.Text" />
+                                For="@(() => _registerFormData.Nickname)" Label="Nickname" InputType="InputType.Text" MaxLength="20"/>
                             <MudTextField @bind-Value="_registerFormData.Email" 
-                                For="@(() => _registerFormData.Email)" Label="Email" InputType="InputType.Email" />
+                                For="@(() => _registerFormData.Email)" Label="Email" InputType="InputType.Email" MaxLength="30"/>
                             <MudTextField @bind-Value="_registerFormData.Password" 
-                                For="@(() => _registerFormData.Password)" Label="Password" InputType="InputType.Password" />
+                                For="@(() => _registerFormData.Password)" Label="Password" InputType="InputType.Password" MaxLength="30"/>
                             <MudTextField @bind-Value="_registerFormData.PasswordConfirmation"
-                                For="@(() => _registerFormData.PasswordConfirmation)" Label="Confirm Password" InputType="InputType.Password" />
+                                For="@(() => _registerFormData.PasswordConfirmation)" Label="Confirm Password" InputType="InputType.Password" MaxLength="30"/>
                             <MudTextField @bind-Value="_registerFormData.Description"
-                                For="@(() => _registerFormData.Description)" Label="Description" InputType="InputType.Text" />
+                                For="@(() => _registerFormData.Description)" Label="Description" 
+                                Lines="5" InputType="InputType.Text" MaxLength="125"/>
                             <MudTextField @bind-Value="_registerFormData.DiscordId" 
-                                For="@(() => _registerFormData.DiscordId)" Label="Discord Id" InputType="InputType.Url" />
+                                For="@(() => _registerFormData.DiscordId)" Label="Discord Id" InputType="InputType.Url" MaxLength="10"/>
                             <MudContainer class="d-flex flex-column justify-center align-center">
                                 <MudCheckBox @bind-Checked="_registerFormData.AcceptedTermsOfService" @ref="@_termsOfServiceCheckbox"
                                     Class="d-flex flex-row justify-center align-center" DisableRipple

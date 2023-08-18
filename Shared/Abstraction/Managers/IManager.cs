@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared.Users
+namespace Shared.Abstraction.Managers
 {
-    public enum UserRoles
+    public interface IManager
     {
-        Admin,
-        RegularPlayer
     }
 }

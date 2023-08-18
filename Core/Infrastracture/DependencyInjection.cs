@@ -30,7 +30,7 @@ namespace Core.Infrastracture
         public static IServiceCollection AddPersistance(this IServiceCollection services, ConfigurationManager configuration)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(configuration["ConnectionString"]));
+                options.UseSqlServer(configuration["SimpoDatabaseConnectionString"]));
 
             services.AddScoped<IDateTimeProvider, DateTimeProvider>();
             services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();

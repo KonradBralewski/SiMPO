@@ -6,11 +6,16 @@ using FluentValidation;
 using Shared.Validation.Validators.Requests.Authentication;
 using Shared.Validation.Validators.Forms.Authentication;
 using Shared.Contracts.Forms.Authentication;
+using Shared.Abstraction.Managers.Identity;
+using System.Text.Json;
 
 namespace Components.Authentication.Login
 {
     public partial class LoginDialog
     {
+        [Inject]
+        private IUserManager _userManager { get; set; } = null!;
+
         private MudForm _mudForm = null!;
 
         [Inject]
@@ -24,12 +29,13 @@ namespace Components.Authentication.Login
         }
         private async Task Submit() 
         {
-            var result = _loginFormDataValidator.ValidateValue;
-
             await _mudForm.Validate();
 
             if(_mudForm.IsValid)
             {
+                var result = await _userManager.LoginUserAsync(new LoginRequest(_loginFormData.Email,
+                                                                                _loginFormData.Password));
+                Console.WriteLine(JsonSerializer.Serialize(result));
             }
         }
         void Cancel() => MudDialog.Cancel();

@@ -1,0 +1,15 @@
+@if(RequestResult is not null || IsWaiting){
+    <MudCardHeader>
+        @if(IsWaiting)
+        {
+            <MudProgressCircular Color="Color.Secondary" Size="Size.Large" Indeterminate="true"
+                Class="mx-auto"/>
+        }
+        else if(RequestResult!.Value.IsError)
+        {
+            <MudAlert Severity="Severity.Error" Variant="Variant.Filled" Elevation="5">
+                @String.Join('\n', RequestResult.Value.Errors.Select(e => e.Description).ToArray())
+            </MudAlert>
+        }
+    </MudCardHeader>
+}

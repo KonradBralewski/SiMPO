@@ -11,7 +11,7 @@ using Core.Controllers.Filters;
 namespace Core.Controllers
 {
     [AllowAnonymous]
-    [Route("auth")]
+    [Route("api/auth")]
     public class AuthenticationController : CustomControllerBase
     {
         private readonly IAuthenticationService _authenticationService;

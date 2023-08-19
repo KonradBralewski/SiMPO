@@ -83,11 +83,18 @@ namespace Blazor.Infrastracture.Extensions.Http
 
             ErrorType httpStatusCode = problemDetails.Status switch
             {
-                StatusCodes.Status400BadRequest => ErrorType.Validation,
-                StatusCodes.Status409Conflict => ErrorType.Conflict,
-                StatusCodes.Status404NotFound => ErrorType.NotFound,
+                HttpStatusCodes.Status400BadRequest => ErrorType.Validation,
+                HttpStatusCodes.Status409Conflict => ErrorType.Conflict,
+                HttpStatusCodes.Status404NotFound => ErrorType.NotFound,
                 _ => ErrorType.Unexpected
             };
+            
+            if(problemDetails.Errors is null)
+            {
+                errors.Add(Error.Custom((int)httpStatusCode, problemDetails.Type, problemDetails.Title));
+
+                return errors;
+            }
 
             for(int i = 0; i < problemDetails.Errors.Count; i++)
             {

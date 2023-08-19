@@ -10,6 +10,7 @@ namespace Components.Authentication.Common
 {
     public partial class AuthenticationButtons
     {
+       
         [Parameter]
         public string ContainerClass { get; set; } = null!;
         [Parameter]
@@ -44,7 +45,13 @@ namespace Components.Authentication.Common
 
         private async Task ShowLoginDialog()
         {
-            await dialogService.ShowAsync<LoginDialog>();
+            var dialogOptions = new DialogOptions
+            {
+                NoHeader = true,
+                DisableBackdropClick = true,
+            };
+
+            await dialogService.ShowAsync<LoginDialog>("Log in", dialogOptions);
         }
 
         private async Task ShowSignUpDialog()

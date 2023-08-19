@@ -1,4 +1,4 @@
-﻿namespace Core.Common.Http
+﻿namespace Shared.Contracts.Constants.Http
 {
     public static class HttpContextItemKeys
     {

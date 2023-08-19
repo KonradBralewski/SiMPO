@@ -6,6 +6,7 @@
         <MudGrid>
                 <MudItem>
                     <MudCard>
+                        <RequestResultDialogExtension RequestResult="@_registerRequestResult" IsWaiting="@_isWaitingForRequestResult"/>
                         <MudCardContent>
                             <MudTextField @bind-Value="_registerFormData.Nickname"
                                 For="@(() => _registerFormData.Nickname)" Label="Nickname" InputType="InputType.Text" MaxLength="20"/>

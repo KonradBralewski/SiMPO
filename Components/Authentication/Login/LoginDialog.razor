@@ -5,6 +5,7 @@
                 <MudItem>
                     <MudCard>
                         <MudCardContent>
+                            <RequestResultDialogExtension RequestResult="@_loginRequestResult" IsWaiting="@_isWaitingForRequestResult"/>
                             <MudTextField @bind-Value="_loginFormData.Email" For="@(() => _loginFormData.Email)"
                                 Label="Email" InputType="InputType.Email" MaxLength="30"/>
                             <MudTextField @bind-Value="_loginFormData.Password" For="@(() => _loginFormData.Password)"

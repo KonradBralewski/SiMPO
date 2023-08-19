@@ -8,6 +8,8 @@ using Shared.Validation.Validators.Forms.Authentication;
 using Shared.Contracts.Forms.Authentication;
 using Shared.Abstraction.Managers.Identity;
 using System.Text.Json;
+using ErrorOr;
+using Shared.Contracts.Responses.Authentication;
 
 namespace Components.Authentication.Login
 {
@@ -21,11 +23,17 @@ namespace Components.Authentication.Login
         [Inject]
         private LoginFormDataValidator _loginFormDataValidator { get; set; } = null!;
 
-        [CascadingParameter] MudDialogInstance MudDialog { get; set; } = null!;
+        [CascadingParameter] 
+        public MudDialogInstance MudDialog { get; set; } = null!;
         private LoginFormData _loginFormData { get; set; } = null!;
+
+        private ErrorOr<AuthenticationResponse>? _loginRequestResult;
+        private bool _isWaitingForRequestResult;
         protected override void OnInitialized()
         {
             _loginFormData = new();
+            _loginRequestResult = null;
+            _isWaitingForRequestResult = false;
         }
         private async Task Submit() 
         {
@@ -33,9 +41,15 @@ namespace Components.Authentication.Login
 
             if(_mudForm.IsValid)
             {
-                var result = await _userManager.LoginUserAsync(new LoginRequest(_loginFormData.Email,
+                _isWaitingForRequestResult = true;
+                _loginRequestResult = await _userManager.LoginUserAsync(new LoginRequest(_loginFormData.Email,
                                                                                 _loginFormData.Password));
-                Console.WriteLine(JsonSerializer.Serialize(result));
+                _isWaitingForRequestResult = false;
+
+                if(_loginRequestResult is not null && !_loginRequestResult.Value.IsError) 
+                {
+                    MudDialog.Close();
+                }
             }
         }
         void Cancel() => MudDialog.Cancel();

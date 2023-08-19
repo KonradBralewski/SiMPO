@@ -14,9 +14,9 @@
             return $"api/identity/user/roles/{userId}";
         }
 
-        public static string Login = "auth/login";
+        public static string Login = "api/auth/login";
 
-        public static string Register = "auth/register";  
+        public static string Register = "api/auth/register";  
 
         public static string ForgotPassword = "api/identity/user/forgot-password";
     }

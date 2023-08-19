@@ -51,11 +51,13 @@ namespace Core.Infrastracture.Authentication
                 return Errors.MightHappen.User.DuplicateEmail;
             }
 
-            // to do requests validation
-
             ApplicationUser user = new()
             {
+                UserName = request.Email,
                 Email = request.Email,
+                Nickname = request.Nickname,
+                DiscordId = request.DiscordId,
+                Description = request.Description,
                 SecurityStamp = Guid.NewGuid().ToString(),
             };
 
@@ -63,6 +65,8 @@ namespace Core.Infrastracture.Authentication
 
             if (!result.Succeeded)
             {
+                // should never happen, to do: log error in database
+                return Error.Unexpected();
             }
 
             //await _userManager.AddToRoleAsync(user, UserRoles.User);

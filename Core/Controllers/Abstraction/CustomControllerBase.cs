@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using ErrorOr;
 using Core.Common.Errors.MightHappen;
-using Core.Common.Http;
+using Shared.Contracts.Constants.Http;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Core.Controllers.Base
 {
@@ -43,7 +43,7 @@ namespace Core.Controllers.Base
             /// CUSTOM
             if (firstError == Errors.MightHappen.Authentication.InvalidCredentials)
             {
-                return Problem(statusCode: StatusCodes.Status401Unauthorized, title: firstError.Description);
+                return Problem(statusCode: HttpStatusCodes.Status401Unauthorized, title: firstError.Description);
             }
 
             /// DEFAULT
@@ -55,10 +55,10 @@ namespace Core.Controllers.Base
         {
             int httpStatusCode = error.Type switch
             {
-                ErrorType.Validation => StatusCodes.Status400BadRequest,
-                ErrorType.Conflict => StatusCodes.Status409Conflict,
-                ErrorType.NotFound => StatusCodes.Status404NotFound,
-                _ => StatusCodes.Status500InternalServerError
+                ErrorType.Validation => HttpStatusCodes.Status400BadRequest,
+                ErrorType.Conflict => HttpStatusCodes.Status409Conflict,
+                ErrorType.NotFound => HttpStatusCodes.Status404NotFound,
+                _ => HttpStatusCodes.Status500InternalServerError
             };
 
             return base.Problem(statusCode: httpStatusCode, title: error.Description);

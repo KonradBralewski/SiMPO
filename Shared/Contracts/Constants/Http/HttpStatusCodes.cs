@@ -8,7 +8,7 @@ namespace Shared.Contracts.Constants.Http
     ///
     /// Status Codes listed at http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
     /// </summary>
-    public static class StatusCodes
+    public static class HttpStatusCodes
     {
         /// <summary>
         /// HTTP status code 100.

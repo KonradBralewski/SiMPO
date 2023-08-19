@@ -6,6 +6,8 @@ using Shared.Validation.Validators.Forms.Authentication;
 using Microsoft.JSInterop;
 using Shared.Abstraction.Managers.Identity;
 using Shared.Contracts.Requests.Authentication;
+using ErrorOr;
+using Shared.Contracts.Responses.Authentication;
 
 namespace Components.Authentication.SignUp
 {
@@ -32,9 +34,15 @@ namespace Components.Authentication.SignUp
 
         private RegisterFormData _registerFormData = null!;
 
+        private ErrorOr<AuthenticationResponse>? _registerRequestResult;
+
+        private bool _isWaitingForRequestResult;
+
         protected override void OnInitialized()
         {
             _registerFormData = new();
+            _registerRequestResult = null;
+            _isWaitingForRequestResult = false;
         }
         private async void handleTermsOfServiceCheckbox()
         {
@@ -80,11 +88,18 @@ namespace Components.Authentication.SignUp
 
             if (_mudForm.IsValid)
             {
-                await _userManager.RegisterUserAsync(new RegisterRequest(_registerFormData.Nickname,
+                _isWaitingForRequestResult = true;
+                _registerRequestResult = await _userManager.RegisterUserAsync(new RegisterRequest(_registerFormData.Nickname,
                                                                          _registerFormData.Email,
                                                                          _registerFormData.Password,
                                                                          _registerFormData.Description,
                                                                          _registerFormData.DiscordId));
+                _isWaitingForRequestResult = false;
+
+                if (_registerRequestResult is not null && !_registerRequestResult.Value.IsError)
+                {
+                    MudDialog.Close();
+                }
             }
         }
     }

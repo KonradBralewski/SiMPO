@@ -2,9 +2,9 @@
 
 namespace Core.Extensions
 {
-    public static class WebApplicationBuilderExtensions
+    internal static class WebApplicationBuilderExtensions
     {
-        public static WebApplicationBuilder Configure(this WebApplicationBuilder builder)
+        internal static WebApplicationBuilder Configure(this WebApplicationBuilder builder)
         {
             builder.AddAzureKeyVaults();
 

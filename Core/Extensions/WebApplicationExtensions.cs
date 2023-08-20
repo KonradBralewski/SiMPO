@@ -1,8 +1,8 @@
 ﻿namespace Core.Extensions
 {
-    public static class WebApplicationExtensions
+    internal static class WebApplicationExtensions
     {
-        public static WebApplication Initialize(this WebApplication app)
+        internal static WebApplication Initialize(this WebApplication app)
         {
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -24,7 +24,6 @@
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-
 
             app.MapRazorPages();
             app.MapControllers();

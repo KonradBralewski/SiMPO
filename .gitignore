@@ -334,3 +334,4 @@ logs/
 
 .DS_Store
 /Blazor/Properties/launchSettings.json
+/package-lock.json

@@ -14,6 +14,9 @@ namespace Core
 
             builder.Services.AddInfrastructure(builder.Configuration);
 
+            builder.Services.AddDependencies();
+
+            builder.Services.ConfigureServices();
             builder.Configure();
 
             var app = builder.Build();

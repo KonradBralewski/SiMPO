@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "@azure/static-web-apps-cli": "^1.1.4"
+  },
+  "name": "simpo",
+  "description": "### Website platform dedicated to SiMPO (Minecraft game server) players. ### Built following traditional monolithic architecture. <hr/>",
+  "version": "1.0.0",
+  "devDependencies": {},
+  "scripts": {
+    "start": "swa start http://localhost:7028 –api-location http://localhost:5214",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KonradBralewski/SiMPO.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KonradBralewski/SiMPO/issues"
+  },
+  "homepage": "https://github.com/KonradBralewski/SiMPO#readme"
+}

@@ -11,6 +11,11 @@ namespace Core
 
             services.AddRazorPages();
 
+            return services;
+        }
+
+        public static IServiceCollection AddDependencies(this IServiceCollection services)
+        {
             services.AddSingleton<ProblemDetailsFactory, CustomProblemDetailsFactory>();
 
             return services;

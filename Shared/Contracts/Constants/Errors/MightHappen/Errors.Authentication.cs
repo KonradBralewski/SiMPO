@@ -16,6 +16,10 @@ namespace Core.Common.Errors.MightHappen
                 public static Error InvalidCredentials => Error.Validation(
                     code: "Authentication.InvalidCredentials",
                     description: "Invalid credentials");
+
+                public static Error NotAuthenticated => Error.Validation(
+                    code: "Authentication.NotAuthenticated",
+                    description: "Not authenticated");
             }
         }
 

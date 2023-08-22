@@ -10,13 +10,14 @@ using Shared.Abstraction.Managers.Identity;
 using System.Text.Json;
 using ErrorOr;
 using Shared.Contracts.Responses.Authentication;
+using Shared.Abstraction.Managers.Authentication;
 
 namespace Components.Authentication.Login
 {
     public partial class LoginDialog
     {
         [Inject]
-        private IUserManager _userManager { get; set; } = null!;
+        private IAuthenticationManager _authenticationManager { get; set; } = null!;
 
         private MudForm _mudForm = null!;
 
@@ -45,7 +46,7 @@ namespace Components.Authentication.Login
             if(_mudForm.IsValid)
             {
                 _isWaitingForRequestResult = true;
-                _loginRequestResult = await _userManager.LoginUserAsync(new LoginRequest(_loginFormData.Email,
+                _loginRequestResult = await _authenticationManager.LoginUserAsync(new LoginRequest(_loginFormData.Email,
                                                                                 _loginFormData.Password));
                 _isWaitingForRequestResult = false;
 

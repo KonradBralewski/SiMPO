@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using Shared.Abstraction.Authentication;
 using Shared.Abstraction.Managers.Identity;
+using Shared.Abstraction.Managers.Authentication;
 
 namespace Components.Authentication.Common
 {
@@ -33,14 +34,14 @@ namespace Components.Authentication.Common
         [Parameter]
         public string ProfileButtonStyle { get; set; } = null!;
         [Inject]
-        private AuthenticationStateProvider authenticationStateProvider { get; set; } = null!;
+        private IAuthenticationManager _authenticationManager { get; set; } = null!;
 
         [Inject]
         private IDialogService dialogService { get; set; } = null!;
 
-        private void Logout()
+        private async Task Logout()
         {
-            ((BaseCustomAuthenticationStateProvider)authenticationStateProvider).MarkUserAsLoggedOut();
+            await _authenticationManager.LogoutUserAsync();
         }
 
         private async Task ShowLoginDialog()

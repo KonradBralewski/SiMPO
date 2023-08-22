@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Core.Common.Errors;
+using System.Net.Http;
+using Blazor.Infrastracture.Interceptors.Http;
 
 namespace Core
 {
@@ -17,6 +19,8 @@ namespace Core
         public static IServiceCollection AddDependencies(this IServiceCollection services)
         {
             services.AddSingleton<ProblemDetailsFactory, CustomProblemDetailsFactory>();
+
+            services.AddTransient<HttpRequestInterceptor>();
 
             return services;
         }

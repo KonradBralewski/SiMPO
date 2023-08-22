@@ -8,16 +8,10 @@ namespace Shared.Abstraction.Managers.Identity
 {
     public interface IUserManager : IManager
     {
-        Task<ErrorOr<AuthenticationResponse>> RegisterUserAsync(RegisterRequest request);
-
-        Task<ErrorOr<AuthenticationResponse>> LoginUserAsync(LoginRequest request);
-
-        Task<ErrorOr<Task>> ResetForgottenPasswordAsync(ForgottenPasswordRequest request);
-
-        Task<ErrorOr<UserResponse>> GetAsync(string userId);
         Task<ErrorOr<IEnumerable<UserResponse>>> GetAllAsync();
-
+        Task<ErrorOr<UserResponse>> GetAsync(string userId);
         Task<ErrorOr<UserRolesResponse>> GetRolesAsync(string userId);
+        Task<ErrorOr<Task>> ResetForgottenPasswordAsync(ForgottenPasswordRequest request);
 
     }
 }

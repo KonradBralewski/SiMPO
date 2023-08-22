@@ -18,54 +18,10 @@ namespace Blazor.Infrastracture.Managers.Identity.UsersManager
     public class UserManager : IUserManager
     {
         private readonly HttpClient _httpClient;
-        private readonly AuthenticationStateProvider _authenticationStateProvider;
-        private readonly ILocalStorageService _localStorage;
 
-        public UserManager(IHttpClientFactory _httpClientFactory,
-            AuthenticationStateProvider authenticationStateProvider,
-            ILocalStorageService localStorage)
+        public UserManager(IHttpClientFactory _httpClientFactory)
         {
             _httpClient = _httpClientFactory.CreateClient(WebAssemblyHostBuilderExtensions.HttpClientName);
-            _authenticationStateProvider = authenticationStateProvider;
-            _localStorage = localStorage;
-        }
-
-        public async Task<ErrorOr<AuthenticationResponse>> RegisterUserAsync(RegisterRequest request)
-        {
-            var response = await _httpClient.PostAsJsonAsync(Routes.UserEndpoints.Register, request);
-
-            var parsedResult = await response.ToResult<AuthenticationResponse>();
-
-            if (!parsedResult.IsError)
-            {
-                var token = parsedResult.Value.Token;
-
-                await HandleTokenReceive(token);
-
-                await ((CustomAuthenticationStateProvider)this._authenticationStateProvider).StateChangedAsync();
-
-            }
-
-            return parsedResult;
-        }
-
-        public async Task<ErrorOr<AuthenticationResponse>> LoginUserAsync(LoginRequest request)
-        {
-            var response = await _httpClient.PostAsJsonAsync(Routes.UserEndpoints.Login, request);
-
-            var parsedResult = await response.ToResult<AuthenticationResponse>();
-
-            if(!parsedResult.IsError)
-            {
-                var token = parsedResult.Value.Token;
-
-                await HandleTokenReceive(token);
-
-                await ((CustomAuthenticationStateProvider)this._authenticationStateProvider).StateChangedAsync();
-
-            }
-
-            return parsedResult;
         }
 
         public async Task<ErrorOr<UserResponse>> GetAsync(string userId)
@@ -93,13 +49,5 @@ namespace Blazor.Infrastracture.Managers.Identity.UsersManager
             var response = await _httpClient.PostAsJsonAsync(Routes.UserEndpoints.ForgotPassword, model);
             return await response.ToResult();
         }
-
-        private async Task HandleTokenReceive(string jwt)
-        {
-            await _localStorage.SetItemAsync(LocalStorageKeys.JWT, jwt);
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
-        }
-
-
     }
 }

@@ -8,13 +8,14 @@ using Shared.Abstraction.Managers.Identity;
 using Shared.Contracts.Requests.Authentication;
 using ErrorOr;
 using Shared.Contracts.Responses.Authentication;
+using Shared.Abstraction.Managers.Authentication;
 
 namespace Components.Authentication.SignUp
 {
     public partial class SignUpDialog
     {
         [Inject]
-        private IUserManager _userManager { get; set; } = null!;
+        private IAuthenticationManager _authenticationManager { get; set; } = null!;
 
         [Inject]
         public IJSRuntime JSRuntime { get; set; } = null!;
@@ -89,7 +90,7 @@ namespace Components.Authentication.SignUp
             if (_mudForm.IsValid)
             {
                 _isWaitingForRequestResult = true;
-                _registerRequestResult = await _userManager.RegisterUserAsync(new RegisterRequest(_registerFormData.Nickname,
+                _registerRequestResult = await _authenticationManager.RegisterUserAsync(new RegisterRequest(_registerFormData.Nickname,
                                                                          _registerFormData.Email,
                                                                          _registerFormData.Password,
                                                                          _registerFormData.Description,

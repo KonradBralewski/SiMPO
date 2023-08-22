@@ -2,6 +2,7 @@
 using System.Text.Json;
 using ErrorOr;
 using Shared.Contracts.Constants.Http;
+using Core.Common.Errors.MightHappen;
 
 namespace Blazor.Infrastracture.Extensions.Http
 {
@@ -36,6 +37,11 @@ namespace Blazor.Infrastracture.Extensions.Http
 
                 return RevertProblemDetailsToErrorList(problemDetails);
             }
+
+            if(response.StatusCode is (System.Net.HttpStatusCode)HttpStatusCodes.Status401Unauthorized)
+            {
+                return Errors.MightHappen.Authentication.NotAuthenticated;
+            }
            
             var result = JsonSerializer.Deserialize<T>(json, jsonOptions);
 
@@ -67,6 +73,11 @@ namespace Blazor.Infrastracture.Extensions.Http
                 }
 
                 return RevertProblemDetailsToErrorList(problemDetails);
+            }
+
+            if (response.StatusCode is (System.Net.HttpStatusCode)HttpStatusCodes.Status401Unauthorized)
+            {
+                return Errors.MightHappen.Authentication.NotAuthenticated;
             }
 
             return Task.CompletedTask;

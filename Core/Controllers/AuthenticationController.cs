@@ -30,6 +30,7 @@ namespace Core.Controllers
                 authResult => Ok(authResult),
                 errors => Problem(errors));
         }
+
         [ModelValidator]
         [HttpPost("login")]
         public async Task<IActionResult> LoginAsync([FromBody] LoginRequest request)

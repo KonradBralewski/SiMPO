@@ -34,6 +34,9 @@ namespace Components.Authentication.Login
             _loginFormData = new();
             _loginRequestResult = null;
             _isWaitingForRequestResult = false;
+
+            _loginFormData.Email = "Shlee@Shlee.com";
+            _loginFormData.Password = "Shlee!@#$5";
         }
         private async Task Submit() 
         {

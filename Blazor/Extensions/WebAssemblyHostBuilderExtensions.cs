@@ -21,10 +21,11 @@ namespace Blazor.Extensions
 
         public static WebAssemblyHostBuilder AddClientServices(this WebAssemblyHostBuilder builder)
         {
-            string baseAddress = builder.Configuration.GetValue<string>("apiBaseUrl");
+            //string baseAddress = builder.Configuration.GetValue<string>("apiBaseUrl");
+
             builder.Services.AddHttpClient(HttpClientName, config =>
             {
-                config.BaseAddress = new Uri(baseAddress);
+                config.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
             });
 
             builder.Services.AddInfrastructure();

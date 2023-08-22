@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace Shared.Contracts.Responses.Identity
 {
     public sealed record UserResponse(string Nickname,
-                                      string Email,
-                                      string Password,
+                                      string Role,
                                       string Description,
                                       string DiscordId);
 }

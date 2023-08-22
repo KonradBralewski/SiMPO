@@ -1,6 +1,7 @@
 @page "/playerCard/{nickname?}"
 @page "/playerCard/{playerRole?}"
 @page "/playerCard/{description?}"
+@page "/playerCard/{discordId?}"
 
 @inherits MudCardDerrived;
 
@@ -18,7 +19,7 @@
         <MudText>@Description</MudText>
     </MudCardContent>
     <MudCardActions Class="@MudCardActionsClass" Style="@MudCardActionsStyle">
-        @if (DiscordLink != null)
+        @if (DiscordId != null)
         {
             <MudImage Src="/_content/Components/images/contact/discord-mark-blue.svg" Fluid="true" Width="50"
                       onclick="@GoToDiscord" />

@@ -6,26 +6,9 @@ namespace Core.Extensions
 {
     internal static class ServiceCollectionExtensions
     {
-        internal static IServiceCollection ConfigureServices(this IServiceCollection services)
+        internal static string policyName = "SimpoPolicy";
+        internal static IServiceCollection ConfigureServices(this IServiceCollection services, ConfigurationManager configuration)
         {
-            services.ConfigureCorsPolicy();
-
-            return services;
-        }
-        internal static IServiceCollection ConfigureCorsPolicy(this IServiceCollection services)
-        {
-            services.AddCors(options =>
-            {
-                options.AddDefaultPolicy(
-                    builder =>
-                    {
-                        builder
-                            .AllowCredentials()
-                            .AllowAnyHeader()
-                            .AllowAnyMethod();
-                    });
-            });
-
             return services;
         }
     }

@@ -20,7 +20,7 @@ namespace Components.Players
         [Parameter]
         public string? Description { get; set; }
         [Parameter]
-        public string? DiscordLink { get; set; }
+        public string? DiscordId { get; set; }
 
         private string _playerRoleStyling { get; set; } = null!;
         protected override void OnInitialized()

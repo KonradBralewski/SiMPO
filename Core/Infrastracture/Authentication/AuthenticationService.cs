@@ -6,6 +6,7 @@ using Core.Common.Interfaces.Authentication;
 using Core.Common.Interfaces.Services;
 using Core.Infrastracture.Persistence.Entities;
 using Core.Common.Errors.MightHappen;
+using Shared.Contracts.Constants.Users;
 
 namespace Core.Infrastracture.Authentication
 {
@@ -37,7 +38,7 @@ namespace Core.Infrastracture.Authentication
 
             var token = _tokenGenerator.GenerateToken(user);
 
-            return new AuthenticationResponse(user.Id,
+            return new AuthenticationResponse(user.Id.ToString(),
                                               user.Email,
                                               token);
         }
@@ -69,11 +70,11 @@ namespace Core.Infrastracture.Authentication
                 return Error.Unexpected();
             }
 
-            //await _userManager.AddToRoleAsync(user, UserRoles.User);
+            await _userManager.AddToRoleAsync(user, UserRoles.RegularPlayer.ToString());
 
             var token = _tokenGenerator.GenerateToken(user);
 
-            return new AuthenticationResponse(user.Id,
+            return new AuthenticationResponse(user.Id.ToString(),
                                              user.Email,
                                              token);
         }

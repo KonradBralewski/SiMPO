@@ -2,7 +2,7 @@
 {
     public static class UserEndpoints
     {
-        public static string GetAll = "api/identity/user";
+        public static string GetAll = "api/identity/users";
 
         public static string Get(string userId)
         {

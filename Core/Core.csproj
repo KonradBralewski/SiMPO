@@ -33,6 +33,7 @@
 
   <ItemGroup>
     <Folder Include="Common\Errors\Unexpected\" />
+    <Folder Include="Infrastracture\Extensions\" />
   </ItemGroup>
 
 

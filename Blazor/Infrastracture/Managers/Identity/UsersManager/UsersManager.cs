@@ -74,6 +74,12 @@ namespace Blazor.Infrastracture.Managers.Identity.UsersManager
             return await response.ToResult<UserResponse>();
         }
 
+        public async Task<ErrorOr<IEnumerable<UserResponse>>> GetAllAsync()
+        {
+            var response = await _httpClient.GetAsync(Routes.UserEndpoints.GetAll);
+            return await response.ToResult<IEnumerable<UserResponse>>();
+        }
+
 
         public async Task<ErrorOr<UserRolesResponse>> GetRolesAsync(string userId)
         {

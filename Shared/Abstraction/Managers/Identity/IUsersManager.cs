@@ -15,6 +15,7 @@ namespace Shared.Abstraction.Managers.Identity
         Task<ErrorOr<Task>> ResetForgottenPasswordAsync(ForgottenPasswordRequest request);
 
         Task<ErrorOr<UserResponse>> GetAsync(string userId);
+        Task<ErrorOr<IEnumerable<UserResponse>>> GetAllAsync();
 
         Task<ErrorOr<UserRolesResponse>> GetRolesAsync(string userId);
 

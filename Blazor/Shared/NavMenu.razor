@@ -6,13 +6,13 @@
 @*SM ONLY SIGN IN/UP BUTTONS*@
 <AuthenticationButtons ContainerClass="d-none d-sm-flex d-md-none flex-row gap-5 mx-0 px-0 align-center justify-center"
                        SignInButtonClass="pa-1"
-                       SignInButtonStyle="width: 90px; height: 50px; font-size: var(--mud-typography-h6-size)"
+                       SignInButtonStyle="@($"color:{Colors.Lime.Accent1}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 100px; height: 50px;")"
                        SignUpButtonClass="pa-1"
-                       SignUpButtonStyle="width: 90px; height: 50px; font-size: var(--mud-typography-h6-size)"
+                       SignUpButtonStyle="@($"color:{Colors.Lime.Accent1}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 100px; height: 50px;")"
                        LogOutButtonClass="pa-3"
-                       LogOutButtonStyle="@($"color:{Colors.Red.Default}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px;")"
+                       LogOutButtonStyle="@($"color:{Colors.Red.Default}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 100px; height: 50px")"
                        ProfileButtonClass="pa-3"
-                       ProfileButtonStyle="@($"color:{Colors.Lime.Accent1}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px;")" />
+                       ProfileButtonStyle="@($"color:{Colors.Lime.Accent1}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 100px; height: 50px")" />
 @*SM ONLY SIGN IN/UP BUTTONS*@
 @*BELOW MD THEME SWTITCHER*@
 <div class="d-flex flex-row d-md-none gap-4 align-center justify-center">
@@ -44,25 +44,25 @@ Style="color: black;">
     <AuthenticationButtons 
                            ContainerClass="d-none d-lg-flex flex-row gap-5 mr-0 align-center justify-end"
                            SignInButtonClass="pa-3 ml-auto"
-                           SignInButtonStyle="width: 125px; height: 50px;"
+                           SignInButtonStyle="@($"color:{Colors.Lime.Accent1}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px; height: 50px;")"
                            SignUpButtonClass="pa-3"
-                           SignUpButtonStyle="width: 125px; height: 50px;"
+                           SignUpButtonStyle="@($"color:{Colors.Lime.Accent1}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px; height: 50px;")"
                            LogOutButtonClass="pa-3"
-                           LogOutButtonStyle="@($"color:{Colors.Red.Default}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px;")"
+                           LogOutButtonStyle="@($"color:{Colors.Red.Default}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px; height: 50px;")"
                            ProfileButtonClass="pa-3"
-                           ProfileButtonStyle="@($"color:{Colors.Lime.Accent1}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px;")" />
+                           ProfileButtonStyle="@($"color:{Colors.Lime.Accent1}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px; height: 50px;")" />
 
     @*LG BREAKPOINT*@
     @*MD BREAKPOINT*@
     <AuthenticationButtons ContainerClass="d-none d-md-flex d-lg-none flex-row gap-2 mx-0 px-0 align-center justify-center"
                            SignInButtonClass="pa-1"
-                           SignInButtonStyle="width: 80px; height: 50px; font-size: var(--mud-typography-h6-size)"
+                           SignInButtonStyle="@($"color:{Colors.Lime.Accent1}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px; height: 50px;")"
                            SignUpButtonClass="pa-1"
-                           SignUpButtonStyle="width: 80px; height: 50px; font-size: var(--mud-typography-h6-size)"
+                           SignUpButtonStyle="@($"color:{Colors.Lime.Accent1}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px; height: 50px;")"
                            LogOutButtonClass="pa-3"
-                           LogOutButtonStyle="@($"color:{Colors.Red.Default}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px;")"
+                           LogOutButtonStyle="@($"color:{Colors.Red.Default}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px; height: 50px;")"
                            ProfileButtonClass="pa-3"
-                           ProfileButtonStyle="@($"color:{Colors.Lime.Accent1}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px;")" />
+                           ProfileButtonStyle="@($"color:{Colors.Lime.Accent1}; background:{Colors.BlueGrey.Darken4}; font-weight: 700; width: 125px; height: 50px;")" />
     @*MD BREAKPOINT*@
 </MudContainer>
 @*MD+ MAIN NAV LAYOUT*@

@@ -3,18 +3,33 @@
 @page "/players"
 
 <PageTitle>Players</PageTitle>
-<MudGrid Justify="Justify.Center" Class="mt-4 mt-sm-15">
-    <MudItem xs="9" md="5">
-        <PlayerCard Nickname="Shakkael" PlayerRole="Admin" MudCardContentStyle="text-align: center;" MudCardActionsClass="justify-center align-center"
-                     DiscordLink="___"/>
-    </MudItem>
-    <MudItem xs="9" md="5">
-        <PlayerCard Nickname="Shlee" PlayerRole="Admin" MudCardContentStyle="text-align: center;" MudCardActionsClass="justify-center align-center"
-                     DiscordLink="___"/>
-    </MudItem>
-    <MudItem xs="9" md="5">
-        <PlayerCard Nickname="S" PlayerRole="Admin" MudCardContentStyle="text-align: center;" MudCardActionsClass="justify-center align-center"
-                     DiscordLink="___"/>
-    </MudItem>
-</MudGrid>
+
+@if (_isWaitingForResponse)
+{
+    @*SM BREAKPOINT*@ 
+    <MudProgressCircular Color="Color.Secondary" Indeterminate="true" Class="absolute ml-auto mr-auto d-sm-none"
+        Style="width: 150px; height: 150px; left: 0; right: 0; top: 35%; margin-top: 125px;" StrokeWidth="10"/>
+    @*SM BREAKPOINT*@
+    @*SM+ BREAKPOINT*@
+    <MudProgressCircular Color="Color.Secondary" Indeterminate="true" 
+        Class="d-none d-sm-block absolute ml-auto mr-auto mt-15"
+        Style="width: 150px; height: 150px; left: 0; right: 0; top: 35%;" StrokeWidth="10" />
+    @*SM+ BREAKPOINT*@
+
+}
+
+@if(_users is not null)
+{
+    <MudGrid Justify="Justify.Center" Class="mt-4 mt-sm-15">
+        @foreach(var user in _users)
+        {
+            <MudItem xs="9" md="5">
+                <PlayerCard Nickname="@user.Nickname" PlayerRole="@user.Role" 
+                    MudCardContentStyle="text-align: center;" MudCardActionsClass="justify-center align-center"
+                    DiscordId="@user.DiscordId" />
+            </MudItem>
+        }
+    </MudGrid>
+
+}
 

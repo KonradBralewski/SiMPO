@@ -12,6 +12,8 @@ using Core.Infrastracture.Persistence;
 using Core.Infrastracture.Persistence.Entities;
 using Core.Infrastracture.Services;
 using Shared.Validation.Validators;
+using Shared.Abstraction.Persistence.Repositories;
+using Core.Infrastracture.Persistence.Repositories;
 
 namespace Core.Infrastracture
 {
@@ -34,6 +36,8 @@ namespace Core.Infrastracture
 
             services.AddScoped<IDateTimeProvider, DateTimeProvider>();
             services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+
+            services.AddScoped<IUserRepository, UserRepository>();
             
 
             services.AddScoped<IAuthenticationService, AuthenticationService>();
@@ -67,8 +71,8 @@ namespace Core.Infrastracture
         public static IServiceCollection ConfigureIdentity(this IServiceCollection services)
         {
             services.AddIdentityCore<ApplicationUser>()
-                .AddRoles<IdentityRole>()
-                .AddRoleManager<RoleManager<IdentityRole>>()
+                .AddRoles<ApplicationRole>()
+                .AddRoleManager<RoleManager<ApplicationRole>>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 

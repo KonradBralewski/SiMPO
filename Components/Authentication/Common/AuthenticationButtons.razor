@@ -1,8 +1,10 @@
 ﻿<MudContainer Class="@ContainerClass" Style="@ContainerStyle">
     <AuthorizeView>
             <NotAuthorized>
-                <MudButton Class="@SignInButtonClass" Style="@SignInButtonStyle" OnClick="@ShowLoginDialog" Variant="Variant.Filled" Color="Color.Info">Log In</MudButton>
-                <MudButton Class="@SignUpButtonClass" Style="@SignUpButtonStyle" OnClick="@ShowSignUpDialog" Variant="Variant.Filled" Color="Color.Info">Sign Up</MudButton>
+                <MudButton Class="@SignInButtonClass" Style="@SignInButtonStyle" OnClick="@ShowLoginDialog" 
+                    Variant="Variant.Filled" Color="Color.Info" EndIcon="@Icons.Material.Filled.Login">Log In</MudButton>
+                <MudButton Class="@SignUpButtonClass" Style="@SignUpButtonStyle" OnClick="@ShowSignUpDialog" 
+                    Variant="Variant.Filled" Color="Color.Info" EndIcon="@Icons.Material.Filled.AppRegistration">Sign Up</MudButton>
             </NotAuthorized>
             <Authorized>
             <MudButton Href="/profile" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.SettingsAccessibility"

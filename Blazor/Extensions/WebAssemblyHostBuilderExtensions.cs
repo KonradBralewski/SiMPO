@@ -1,8 +1,12 @@
 ﻿using Blazor.Infrastracture;
 using Blazor.Infrastracture.Interceptors.Http;
+using Blazor.Infrastracture.Managers.Http;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.Http;
+using Microsoft.Extensions.Options;
+using Shared.Abstraction.Interceptors;
 
 namespace Blazor.Extensions
 {
@@ -26,8 +30,11 @@ namespace Blazor.Extensions
             builder.Services.AddHttpClient(HttpClientName, config =>
             {
                 config.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
-            })
-                .AddHttpMessageHandler<HttpRequestInterceptor>();
+            });
+
+            builder.Services
+                .AddScoped<HttpClientOwner>()
+                .AddScoped<IHttpRequestInterceptor, HttpRequestInterceptor>();
 
             builder.Services.AddInfrastructure();
 

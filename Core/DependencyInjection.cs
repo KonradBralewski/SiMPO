@@ -20,8 +20,6 @@ namespace Core
         {
             services.AddSingleton<ProblemDetailsFactory, CustomProblemDetailsFactory>();
 
-            services.AddTransient<HttpRequestInterceptor>();
-
             return services;
         }
     }

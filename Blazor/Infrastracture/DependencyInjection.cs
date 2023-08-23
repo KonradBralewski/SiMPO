@@ -9,6 +9,7 @@ using Blazor.Infrastracture.Managers.Identity.UsersManager;
 using Shared.Abstraction.Managers.Authentication;
 using Blazor.Infrastracture.Managers.Authentication;
 using Blazor.Infrastracture.Interceptors.Http;
+using MudBlazor;
 
 namespace Blazor.Infrastracture
 {
@@ -16,7 +17,14 @@ namespace Blazor.Infrastracture
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
-            services.AddMudServices();
+            services.AddMudServices(configuration =>
+             {
+                 configuration.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.TopCenter;
+                 configuration.SnackbarConfiguration.HideTransitionDuration = 200;
+                 configuration.SnackbarConfiguration.ShowTransitionDuration = 200;
+                 configuration.SnackbarConfiguration.VisibleStateDuration = 4000;
+                 configuration.SnackbarConfiguration.ShowCloseIcon = true;
+             });
 
             services.AddBlazoredLocalStorage();
 

@@ -8,17 +8,18 @@ using Blazor.Extensions;
 using Shared.Contracts.Constants.Storage;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
+using Blazor.Infrastracture.Managers.Http;
 
 namespace Blazor.Infrastracture.Authentication
 {
     public class CustomAuthenticationStateProvider : BaseCustomAuthenticationStateProvider
     {
-        private readonly HttpClient _httpClient;
+        private readonly HttpClientOwner _httpClientOwner;
         private readonly ILocalStorageService _localStorage;
-        public CustomAuthenticationStateProvider(ILocalStorageService localStorage, IHttpClientFactory _httpClientFactory)
+        public CustomAuthenticationStateProvider(ILocalStorageService localStorage, HttpClientOwner httpClientOwner)
         {
             _localStorage = localStorage;
-            _httpClient = _httpClientFactory.CreateClient(WebAssemblyHostBuilderExtensions.HttpClientName);
+            _httpClientOwner = httpClientOwner; 
         }
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
         {
@@ -29,7 +30,7 @@ namespace Blazor.Infrastracture.Authentication
                 return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
             }
 
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", savedToken);
+            _httpClientOwner.GetWrappedHttpClient().DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", savedToken);
 
             var state = new AuthenticationState(DecodeJwt(savedToken));
 

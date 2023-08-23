@@ -13,27 +13,28 @@ using Blazored.LocalStorage;
 using Shared.Contracts.Constants.Storage;
 using Blazor.Infrastracture.Authentication;
 using Shared.Abstraction.Managers.Authentication;
+using Blazor.Infrastracture.Managers.Http;
 
 namespace Blazor.Infrastracture.Managers.Authentication
 {
     public class AuthenticationManager : IAuthenticationManager
     {
-        private readonly HttpClient _httpClient;
+        private readonly HttpClientOwner _httpClientOwner;
         private readonly AuthenticationStateProvider _authenticationStateProvider;
         private readonly ILocalStorageService _localStorage;
 
-        public AuthenticationManager(IHttpClientFactory _httpClientFactory,
+        public AuthenticationManager(HttpClientOwner httpClientOwner,
             AuthenticationStateProvider authenticationStateProvider,
             ILocalStorageService localStorage)
         {
-            _httpClient = _httpClientFactory.CreateClient(WebAssemblyHostBuilderExtensions.HttpClientName);
+            _httpClientOwner = httpClientOwner;
             _authenticationStateProvider = authenticationStateProvider;
             _localStorage = localStorage;
         }
 
         public async Task<ErrorOr<AuthenticationResponse>> RegisterUserAsync(RegisterRequest request)
         {
-            var response = await _httpClient.PostAsJsonAsync(Routes.UserEndpoints.Register, request);
+            var response = await _httpClientOwner.PostAsJsonAsync(Routes.UserEndpoints.Register, request);
 
             var parsedResult = await response.ToResult<AuthenticationResponse>();
 
@@ -52,7 +53,7 @@ namespace Blazor.Infrastracture.Managers.Authentication
 
         public async Task<ErrorOr<AuthenticationResponse>> LoginUserAsync(LoginRequest request)
         {
-            var response = await _httpClient.PostAsJsonAsync(Routes.UserEndpoints.Login, request);
+            var response = await _httpClientOwner.PostAsJsonAsync(Routes.UserEndpoints.Login, request);
 
             var parsedResult = await response.ToResult<AuthenticationResponse>();
 
@@ -78,7 +79,7 @@ namespace Blazor.Infrastracture.Managers.Authentication
         private async Task HandleTokenReceive(string jwt)
         {
             await _localStorage.SetItemAsync(LocalStorageKeys.JWT, jwt);
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            _httpClientOwner.GetWrappedHttpClient().DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
         }
 
     }

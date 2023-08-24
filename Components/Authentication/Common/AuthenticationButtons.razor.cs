@@ -33,6 +33,7 @@ namespace Components.Authentication.Common
         public string ProfileButtonClass { get; set; } = null!;
         [Parameter]
         public string ProfileButtonStyle { get; set; } = null!;
+
         [Inject]
         private IAuthenticationManager _authenticationManager { get; set; } = null!;
 

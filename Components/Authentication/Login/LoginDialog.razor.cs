@@ -19,6 +19,9 @@ namespace Components.Authentication.Login
         [Inject]
         private IAuthenticationManager _authenticationManager { get; set; } = null!;
 
+        [Inject]
+        private NavigationManager _navigationManager { get; set; } = null!;
+
         private MudForm _mudForm = null!;
 
         [Inject]
@@ -53,6 +56,7 @@ namespace Components.Authentication.Login
                 if(_loginRequestResult is not null && !_loginRequestResult.Value.IsError) 
                 {
                     MudDialog.Close();
+                    _navigationManager.NavigateTo("/");
                 }
             }
         }

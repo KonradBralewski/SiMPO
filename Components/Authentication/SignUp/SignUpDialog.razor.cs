@@ -18,6 +18,9 @@ namespace Components.Authentication.SignUp
         private IAuthenticationManager _authenticationManager { get; set; } = null!;
 
         [Inject]
+        private NavigationManager _navigationManager { get; set; } = null!;
+
+        [Inject]
         public IJSRuntime JSRuntime { get; set; } = null!;
 
         [Inject]
@@ -100,6 +103,7 @@ namespace Components.Authentication.SignUp
                 if (_registerRequestResult is not null && !_registerRequestResult.Value.IsError)
                 {
                     MudDialog.Close();
+                    _navigationManager.NavigateTo("/");
                 }
             }
         }

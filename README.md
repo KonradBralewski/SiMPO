@@ -21,7 +21,3 @@
 + ErrorOr
 
 <hr/>
-
-### See actual progress on:
-
-<https://red-coast-068773103.3.azurestaticapps.net/>

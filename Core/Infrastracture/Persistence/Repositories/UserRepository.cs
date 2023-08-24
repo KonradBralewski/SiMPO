@@ -1,4 +1,5 @@
-﻿using Core.Infrastracture.Persistence.Entities;
+﻿using Core.Common.Errors.MightHappen;
+using Core.Infrastracture.Persistence.Entities;
 using ErrorOr;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -31,7 +32,7 @@ namespace Core.Infrastracture.Persistence.Repositories
             }
 
             var usersResponse = users.Select(u => new UserResponse(
-                    u.UserName,
+                    u.Nickname,
                     String.Join('\n', u.UserRoles.First().Role),
                     u.Description,
                     u.DiscordId
@@ -40,9 +41,24 @@ namespace Core.Infrastracture.Persistence.Repositories
             return ErrorOrFactory.From(usersResponse);
         }
 
-        public Task<ErrorOr<UserResponse>> GetAsync(string userId)
+        public async Task<ErrorOr<UserResponse>> GetAsync(Guid userId)
         {
-            throw new NotImplementedException();
+            var user = await _userManager.Users
+                .Include(x => x.UserRoles)
+                .ThenInclude(x => x.Role)
+                .FirstOrDefaultAsync(x => x.Id == userId);
+
+            if(user is null)
+            {
+                return Errors.MightHappen.GeneralDomainUnit.UnitNotFound(nameof(ApplicationUser));
+            }
+
+            var userResponse = new UserResponse(user.Nickname,
+                                                String.Join('\n', user.UserRoles.First().Role),
+                                                user.Description,
+                                                user.DiscordId);
+
+            return userResponse;
         }
     }
 }

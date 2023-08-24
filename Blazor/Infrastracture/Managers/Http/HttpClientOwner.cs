@@ -35,6 +35,8 @@ namespace Blazor.Infrastracture.Managers.Http
 
         public async Task<HttpResponseMessage> GetAsync(string requestUri)
         {
+            _httpRequestInterceptor.InterceptBeforeHttpRequest();
+
             var response = await _httpClient.GetAsync(requestUri);
 
             _httpRequestInterceptor.InterceptAfterHttpRequest(response);
@@ -43,6 +45,8 @@ namespace Blazor.Infrastracture.Managers.Http
         }
         public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage requestMessage)
         {
+            _httpRequestInterceptor.InterceptBeforeHttpRequest();
+
             var response = await _httpClient.SendAsync(requestMessage);
 
             _httpRequestInterceptor.InterceptAfterHttpRequest(response);
@@ -52,6 +56,8 @@ namespace Blazor.Infrastracture.Managers.Http
 
         public async Task<HttpResponseMessage> PostAsJsonAsync<TValue>(string requestUri, TValue value)
         {
+            _httpRequestInterceptor.InterceptBeforeHttpRequest();
+
             var response = await _httpClient.PostAsJsonAsync(requestUri, value);
 
             _httpRequestInterceptor.InterceptAfterHttpRequest(response);

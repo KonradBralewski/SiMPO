@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Http;
 using Microsoft.Extensions.Options;
 using Shared.Abstraction.Interceptors;
+using Shared.Abstraction.Managers;
 
 namespace Blazor.Extensions
 {

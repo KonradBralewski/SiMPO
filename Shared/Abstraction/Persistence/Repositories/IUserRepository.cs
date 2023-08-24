@@ -10,7 +10,7 @@ namespace Shared.Abstraction.Persistence.Repositories
 {
     public interface IUserRepository
     {
-        Task<ErrorOr<UserResponse>> GetAsync(string userId);
+        Task<ErrorOr<UserResponse>> GetAsync(Guid userId);
         Task<ErrorOr<IEnumerable<UserResponse>>> GetAllAsync();
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Shared.Abstraction.Managers.Authentication
 {
-    public interface IAuthenticationManager
+    public interface IAuthenticationManager : IManager
     {
         Task<ErrorOr<AuthenticationResponse>> RegisterUserAsync(RegisterRequest request);
 

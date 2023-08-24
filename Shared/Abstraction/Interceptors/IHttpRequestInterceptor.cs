@@ -8,6 +8,7 @@ namespace Shared.Abstraction.Interceptors
 {
     public interface IHttpRequestInterceptor
     {
+        void InterceptBeforeHttpRequest();
         void InterceptAfterHttpRequest(HttpResponseMessage? responseMessage);
     }
 }

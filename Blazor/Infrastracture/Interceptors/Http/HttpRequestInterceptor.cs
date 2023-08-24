@@ -3,6 +3,7 @@ using MudBlazor;
 using System.Net;
 using Shared.Abstraction.Managers.Authentication;
 using Shared.Abstraction.Interceptors;
+using Blazor.Infrastracture.State;
 
 namespace Blazor.Infrastracture.Interceptors.Http
 {
@@ -10,24 +11,34 @@ namespace Blazor.Infrastracture.Interceptors.Http
     {
         private readonly NavigationManager _navigationManager;
         private readonly ISnackbar _snackBar;
+        private readonly ApplicationState _appState;
 
         public HttpRequestInterceptor(
             NavigationManager navigationManager,
-            ISnackbar snackBar)
+            ISnackbar snackBar,
+            ApplicationState appState)
         {
             _navigationManager = navigationManager;
             _snackBar = snackBar;
+            _appState = appState;
+        }
+        public void InterceptBeforeHttpRequest()
+        {
+            _appState.IsWaitingForResponse = true;
         }
 
         public void InterceptAfterHttpRequest(HttpResponseMessage? responseMessage)
         {
-            if(responseMessage is null)
+            _appState.IsWaitingForResponse = false;
+
+            if (responseMessage is null)
             {
                 return;
             }
 
             RedirectIfNotAuthorized(responseMessage);
         }
+
 
         private void RedirectIfNotAuthorized(HttpResponseMessage responseMessage)
         {

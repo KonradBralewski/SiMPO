@@ -2,6 +2,8 @@
 {
     public static class UserEndpoints
     {
+        public static string GetCurrentUser = "api/identity/users/me";
+
         public static string GetAll = "api/identity/users";
 
         public static string Get(string userId)

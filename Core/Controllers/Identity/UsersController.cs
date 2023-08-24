@@ -15,6 +15,16 @@ namespace Core.Controllers.Identity
         {
             _userRepository = userRepository;
         }
+        [HttpGet("me")]
+        public async Task<IActionResult> GetCallingUserAsync()
+        {
+            var getUsersResult = await _userRepository.GetAsync(RetrieveRequestSendingUserId());
+
+            return getUsersResult.Match(
+                usersResult => Ok(usersResult),
+                errors => Problem(errors));
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetUsersAsync()
         {

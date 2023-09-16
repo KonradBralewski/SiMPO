@@ -1,9 +1,14 @@
 ﻿@page "/map"
 
-<MudContainer Style="height: 100vh; width: 100%;" Class="d-flex d-lg-none align-center justify-center">
+@if (!_isMapLoaded)
+{
+    <LoadingCircle/>
+}
+
+<MudContainer Style="height: 100vh; width: 100%;" Class="d-flex d-lg-none align-center justify-center" onload="@(() => {_isMapLoaded = true;})">
     <iframe style="height: 80%; width: 100%; border: 0;"  src="https://craftserve.pl/s/1092374/map?widget"></iframe>
 </MudContainer>
 
 <MudContainer Style="height: 100vh; width: 100vw; max-width: 100vw;" Class="d-none d-lg-flex align-center justify-center">
-    <iframe style="height: 90%; width: 90%; border: 0;" src="https://craftserve.pl/s/1092374/map?widget"></iframe>
+    <iframe style="height: 90%; width: 90%; border: 0;" src="https://craftserve.pl/s/1092374/map?widget" onload="@(() => {_isMapLoaded = true;})"></iframe>
 </MudContainer>

@@ -18,15 +18,7 @@
         </CascadingValue>
         @if(_appState.IsApplicationWaiting())
         {
-             @*SM BREAKPOINT*@ 
-            <MudProgressCircular Color="Color.Secondary" Indeterminate="true" Class="absolute ml-auto mr-auto d-sm-none"
-                Style="width: 150px; height: 150px; left: 0; right: 0; top: 35%; margin-top: 125px;" StrokeWidth="10"/>
-            @*SM BREAKPOINT*@
-            @*SM+ BREAKPOINT*@
-            <MudProgressCircular Color="Color.Secondary" Indeterminate="true" 
-                Class="d-none d-sm-block absolute ml-auto mr-auto mt-15"
-                Style="width: 150px; height: 150px; left: 0; right: 0; top: 35%;" StrokeWidth="10" />
-            @*SM+ BREAKPOINT*@            
+            <LoadingCircle/>
         }
     </MudMainContent>
     <Footer/>

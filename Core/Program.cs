@@ -6,7 +6,7 @@ namespace Core
 {
     public class Program
     {
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -16,15 +16,13 @@ namespace Core
 
             builder.Services.AddDependencies();
 
-            builder.Services.ConfigureServices(builder.Configuration);
-
             builder.Configure();
 
             var app = builder.Build();
 
-            await app.Initialize();
+            app.Initialize();
 
-            await app.RunAsync();
+            app.Run();
                
         }
     }

@@ -1,4 +1,5 @@
-﻿using Core.Infrastracture.Persistence.Entities;
+﻿using Core.Infrastracture.Hubs;
+using Core.Infrastracture.Persistence.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Contracts.Constants.Users;
@@ -7,8 +8,10 @@ namespace Core.Extensions
 {
     internal static class WebApplicationExtensions
     {
-        internal static async Task<WebApplication> Initialize(this WebApplication app)
+        internal static WebApplication Initialize(this WebApplication app)
         {
+            app.UseResponseCompression();
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -21,8 +24,8 @@ namespace Core.Extensions
                 app.UseHsts();
             }
 
-            await app.CreateDefinedRoles();
             app.ConfigureCors();
+            app.UseDatabaseSeed();
 
             app.UseHttpsRedirection();
 
@@ -36,6 +39,7 @@ namespace Core.Extensions
             app.MapRazorPages();
             app.MapControllers();
             app.MapFallbackToFile("index.html");
+            app.MapHubs();
 
             return app;
         }
@@ -60,37 +64,36 @@ namespace Core.Extensions
             return app;
         }
 
-        private static async Task<WebApplication> CreateDefinedRoles(this WebApplication app)
+        private static void UseDatabaseSeed(this WebApplication app)
         {
-            using var scope = app.Services.CreateScope();
+            CreateDefinedRoles(app);
+        }
+
+        private static void CreateDefinedRoles(WebApplication app)
+        {
+            var scope = app.Services.CreateScope();
 
             var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
-            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-
-            if(roleManager is null || userManager is null)
-            {
-                // to do: log to database
-                return app;
-            }
-
-            IdentityResult roleResult;
 
             foreach (var roleName in Enum.GetNames(typeof(UserRoles)))
             {
-                var roleExist = await roleManager.RoleExistsAsync(roleName);
+                var roleExist = roleManager.RoleExistsAsync(roleName).GetAwaiter().GetResult();
 
                 if (!roleExist)
                 {
-                    roleResult = await roleManager.CreateAsync(new ApplicationRole { Name = roleName});
+                    var roleResult = roleManager.CreateAsync(new ApplicationRole { Name = roleName }).GetAwaiter().GetResult();
 
-                    if(!roleResult.Succeeded)
+                    if (!roleResult.Succeeded)
                     {
                         //to do: log to database
                     }
                 }
             }
+        }
 
-            return app;
+        private static void MapHubs(this WebApplication app)
+        {
+            app.MapHub<ChatHub>($"/{nameof(ChatHub)}");
         }
     }
 }

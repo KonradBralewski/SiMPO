@@ -10,7 +10,7 @@
         @foreach(var user in _users)
         {
             <MudItem xs="9" md="5">
-                <PlayerCard Nickname="@user.Nickname" PlayerRole="@user.Role" 
+                <PlayerCard Nickname="@user.Nickname" PlayerRole="@user.Role"  Description="@user.Description"
                     MudCardContentStyle="text-align: center;" MudCardActionsClass="justify-center align-center"
                     DiscordId="@user.DiscordId" />
             </MudItem>

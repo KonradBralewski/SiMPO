@@ -67,5 +67,9 @@ Style="color: black;">
 </MudContainer>
 @*MD+ MAIN NAV LAYOUT*@
 
-<MudIconButton Icon="@Icons.Material.Filled.Chat" aria-label="Chat" Color="Color.Secondary" Href="/chat"
-    Size="Size.Large" Style="position:fixed; right: 50px; bottom: 45px;"/>
+<AuthorizeView>
+    <Authorized>
+        <MudIconButton Icon="@Icons.Material.Filled.Chat" aria-label="Chat" Color="Color.Secondary" OnClick="ShowDialogChat"
+            Size="Size.Large" Style="position:fixed; right: 50px; bottom: 45px;"/>
+    </Authorized>
+</AuthorizeView>

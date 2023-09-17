@@ -14,6 +14,8 @@ using Core.Infrastracture.Services;
 using Shared.Validation.Validators;
 using Shared.Abstraction.Persistence.Repositories;
 using Core.Infrastracture.Persistence.Repositories;
+using Shared.Contracts.Constants.Users;
+using Microsoft.AspNetCore.ResponseCompression;
 
 namespace Core.Infrastracture
 {
@@ -25,6 +27,7 @@ namespace Core.Infrastracture
             services.AddPersistance(configuration);
             services.ConfigureIdentity();
             services.AddAuth(configuration);
+            services.ConfigureSignalR();
 
             return services;
         }
@@ -38,7 +41,6 @@ namespace Core.Infrastracture
             services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 
             services.AddScoped<IUserRepository, UserRepository>();
-            
 
             services.AddScoped<IAuthenticationService, AuthenticationService>();
 
@@ -87,6 +89,18 @@ namespace Core.Infrastracture
                 options.SignIn.RequireConfirmedEmail = false;
                 options.SignIn.RequireConfirmedPhoneNumber = false;
             });
+            return services;
+        }
+
+        public static IServiceCollection ConfigureSignalR(this IServiceCollection services)
+        {
+            services.AddSignalR();
+            services.AddResponseCompression(opts =>
+            {
+                opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+                   new[] { "application/octet-stream" });
+            });
+
             return services;
         }
     }

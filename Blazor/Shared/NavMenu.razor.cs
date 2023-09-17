@@ -5,11 +5,14 @@ using Components.Authentication.Login;
 using Components.Authentication.SignUp;
 using Blazor.Infrastracture.Authentication;
 using MudBlazor.Services;
+using Components.Chat;
 
 namespace Blazor.Shared
 {
     public partial class NavMenu
     {
+        [Inject]
+        private IDialogService _dialogService { get; set; } = null!;
         [Parameter]
         public EventCallback ToggleDarkMode { get; set; }
         [Parameter]
@@ -33,6 +36,11 @@ namespace Blazor.Shared
         private void UpdateTogglerLabel()
         {
             _togglerLabel = "Toggle " + (IsDarkMode ? "Light Mode" : "Dark Mode");
+        }
+
+        private async Task ShowDialogChat() 
+        {
+            await _dialogService.ShowAsync<ChatDialog>();
         }
     }
 }

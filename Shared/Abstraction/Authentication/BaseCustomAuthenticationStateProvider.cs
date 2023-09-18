@@ -9,6 +9,7 @@ namespace Shared.Abstraction.Authentication
 {
     public abstract class BaseCustomAuthenticationStateProvider : AuthenticationStateProvider
     {
-        public abstract Task MarkUserAsLoggedOut();
+        public abstract Task MarkUserAsLoggedOutAsync();
+        public abstract Task<Guid?> GetUserIdAsync();
     }
 }

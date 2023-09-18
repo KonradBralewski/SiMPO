@@ -9,6 +9,7 @@ using Shared.Contracts.Constants.Storage;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using Blazor.Infrastracture.Managers.Http;
+using System.Text.Json;
 
 namespace Blazor.Infrastracture.Authentication
 {
@@ -47,7 +48,7 @@ namespace Blazor.Infrastracture.Authentication
             return principal;
         }
 
-        public override async Task MarkUserAsLoggedOut()
+        public override async Task MarkUserAsLoggedOutAsync()
         {
             await _localStorage.RemoveItemAsync(LocalStorageKeys.JWT);
 
@@ -56,6 +57,22 @@ namespace Blazor.Infrastracture.Authentication
             var authState = Task.FromResult(new AuthenticationState(anonymousUser));
 
             NotifyAuthenticationStateChanged(authState);
+        }
+
+        public override async Task<Guid?> GetUserIdAsync()
+        {
+            var authState = await GetAuthenticationStateAsync();
+
+            var claims = authState.User.Claims.ToList();
+
+            var userId = claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Sub)?.Value;
+
+            if(userId is null)
+            {
+                return null;
+            }
+
+            return Guid.Parse(userId);
         }
 
         public async Task StateChangedAsync()

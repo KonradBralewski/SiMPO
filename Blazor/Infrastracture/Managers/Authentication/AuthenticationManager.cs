@@ -72,7 +72,7 @@ namespace Blazor.Infrastracture.Managers.Authentication
 
         public async Task<ErrorOr<Task>> LogoutUserAsync()
         {
-            await ((CustomAuthenticationStateProvider)this._authenticationStateProvider).MarkUserAsLoggedOut();
+            await ((CustomAuthenticationStateProvider)this._authenticationStateProvider).MarkUserAsLoggedOutAsync();
 
             return Task.CompletedTask;
         }

@@ -13,6 +13,8 @@ namespace Core.Infrastracture.Persistence.Entities
         public string? ProfileImageUrl { get; set; } = null!;
 
         public int Balance { get; set; }
+        
+        public virtual ICollection<ChatMessage> ChatHistory { get; set; } = null!;
 
         public virtual ICollection<ApplicationUserRole> UserRoles { get; set; } = null!;
     }

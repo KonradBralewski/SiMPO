@@ -4,6 +4,7 @@ using Core.Infrastracture.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Core.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230917111701_ChatHistory")]
+    partial class ChatHistory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -149,7 +151,7 @@ namespace Core.Migrations
                     b.ToTable("AspNetUserRoles", (string)null);
                 });
 
-            modelBuilder.Entity("Core.Infrastracture.Persistence.Entities.ChatMessage", b =>
+            modelBuilder.Entity("Core.Infrastracture.Persistence.Entities.ChatHistory", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -170,7 +172,7 @@ namespace Core.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ChatMessages", (string)null);
+                    b.ToTable("ChatHistory");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -280,7 +282,7 @@ namespace Core.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Core.Infrastracture.Persistence.Entities.ChatMessage", b =>
+            modelBuilder.Entity("Core.Infrastracture.Persistence.Entities.ChatHistory", b =>
                 {
                     b.HasOne("Core.Infrastracture.Persistence.Entities.ApplicationUser", "User")
                         .WithMany("ChatHistory")

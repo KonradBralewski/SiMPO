@@ -10,6 +10,9 @@ namespace Core.Infrastracture.Persistence
         IdentityDbContext<ApplicationUser, ApplicationRole, Guid, IdentityUserClaim<Guid>,
             ApplicationUserRole, IdentityUserLogin<Guid>,IdentityRoleClaim<Guid>, IdentityUserToken<Guid>>
     {
+
+        public DbSet<ChatMessage> Messages { get; set; } = null!;
+
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
 

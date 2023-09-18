@@ -8,6 +8,8 @@ namespace Core.Infrastracture.Persistence.Configuration
     {
         public void Configure(EntityTypeBuilder<ApplicationUser> builder)
         {
+            builder.HasMany(x => x.ChatHistory)
+                .WithOne(x => x.User);
         }
     }
 }

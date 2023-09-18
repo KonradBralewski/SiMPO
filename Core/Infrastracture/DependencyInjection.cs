@@ -41,6 +41,7 @@ namespace Core.Infrastracture
             services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IChatMessageRepository, ChatMessageRepository>();
 
             services.AddScoped<IAuthenticationService, AuthenticationService>();
 

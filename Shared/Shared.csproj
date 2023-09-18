@@ -19,5 +19,6 @@
 
   <ItemGroup>
     <Folder Include="Contracts\Constants\Errors\Unexpected\" />
+    <Folder Include="Contracts\Requests\ChatMessages\" />
   </ItemGroup>
 </Project>
